@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox prefHeight="700.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane prefHeight="700.0" prefWidth="599.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="14.999994277954102" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="251.0000057220459" minWidth="10.0" prefWidth="251.0000057220459" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="267.4" minWidth="10.0" prefWidth="267.4" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="49.39999999999998" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="349.8" minHeight="10.0" prefHeight="349.8" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="241.8" minHeight="10.0" prefHeight="185.40000000000003" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="173.39999999999998" minHeight="10.0" prefHeight="165.39999999999998" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+                     <children>
+                        <HBox prefHeight="92.0" prefWidth="268.0" />
+                        <HBox prefHeight="100.0" prefWidth="200.0" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets top="100.0" />
+                     </GridPane.margin>
+                  </VBox>
+               </children>
+            </GridPane>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
