@@ -3,6 +3,8 @@ module com.example.project4 {
     requires javafx.fxml;
 
 
-    opens com.example.project4 to javafx.fxml;
-    exports com.example.project4;
+    opens com.example.model to javafx.fxml;
+    exports com.example.model;
+    exports com.example.controller;
+    opens com.example.controller to javafx.fxml;
 }
