@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <GridPane prefHeight="524.0" prefWidth="600.0">
-              <columnConstraints>
+               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0" prefWidth="30.999999046325684" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.0" minWidth="10.0" prefWidth="269.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="304.59999999999997" minWidth="10.0" prefWidth="265.3999999999999" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="0.0" prefWidth="34.39999999999998" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="248.4" minHeight="10.0" prefHeight="199.4" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="168.4" minHeight="10.0" prefHeight="119.80000000000001" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="154.39999999999998" minHeight="10.0" prefHeight="154.39999999999998" vgrow="SOMETIMES" />
-              </rowConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="304.59999999999997" minWidth="10.0" prefWidth="265.3999999999999" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="0.0" prefWidth="34.39999999999998" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="248.4" minHeight="10.0" prefHeight="199.4" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="168.4" minHeight="10.0" prefHeight="119.80000000000001" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="154.39999999999998" minHeight="10.0" prefHeight="154.39999999999998" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                      <children>
@@ -43,10 +41,6 @@
                         <HBox prefHeight="100.0" prefWidth="200.0" />
                      </children>
                   </VBox>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>
