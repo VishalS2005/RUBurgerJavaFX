@@ -26,7 +26,7 @@ public class BurgerTest {
     }
 
     @Test
-    public void singleLettuceTomatoesprice() {
+    public void singleLettuceTomatoesPrice() {
        assertEquals(7.59,   singleLettuceTomatoes.price(), 0.01);
     }
 
