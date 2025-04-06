@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, lightblue, white);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.MainController">
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <GridPane prefHeight="524.0" prefWidth="600.0">
+            <GridPane alignment="CENTER" prefHeight="524.0" prefWidth="600.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0" prefWidth="30.999999046325684" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.0" minWidth="10.0" prefWidth="269.0" />
@@ -16,31 +24,119 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="0.0" prefWidth="34.39999999999998" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints maxHeight="248.4" minHeight="10.0" prefHeight="199.4" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="168.4" minHeight="10.0" prefHeight="119.80000000000001" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="154.39999999999998" minHeight="10.0" prefHeight="154.39999999999998" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="248.4" minHeight="10.0" prefHeight="36.399993896484375" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="206.6000099182129" minHeight="10.0" prefHeight="117.20000610351562" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="214.2000183105469" minHeight="10.0" prefHeight="92.20003967285157" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="163.19998779296873" minHeight="10.0" prefHeight="131.39996032714845" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="154.39999999999998" minHeight="10.0" prefHeight="123.60004882812501" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="154.39999999999998" minHeight="10.0" prefHeight="28.399951171875045" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0" />
-                        <HBox prefHeight="100.0" prefWidth="200.0" />
+                        <Label text="RUBurger" textFill="#ec0606">
+                           <font>
+                              <Font name="Comic Sans MS" size="38.0" />
+                           </font>
+                        </Label>
                      </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Label text="RUBurger" textFill="#ec0606">
-                                 <font>
-                                    <Font name="Comic Sans MS" size="38.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" />
+                        <Button fx:id="bt_burger" contentDisplay="TOP" mnemonicParsing="false" onAction="#displayBurgerView" onDragEntered="#mouseEnterBurger" onDragExited="#mouseExitBurger" prefHeight="119.0" prefWidth="228.0" style="-fx-background-color: #FFFFFF;" text="Burger" textAlignment="CENTER">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="79.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/Burger.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
-                  </VBox>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <children>
+                        <Button fx:id="bt_sandwich" contentDisplay="TOP" mnemonicParsing="false" onAction="#sandwichClicked" onDragEntered="#mouseEnterSandwich" onDragExited="#mouseExitSandwich" prefHeight="117.0" prefWidth="224.0" style="-fx-background-color: #FFFFFF;" text="Sandwich">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="96.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/Sandwich.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <children>
+                        <Button fx:id="bt_beverage" contentDisplay="TOP" mnemonicParsing="false" onAction="#beverageClicked" onDragEntered="#mouseEnterBeverage" onDragExited="#mouseExitBeverage" prefHeight="110.0" prefWidth="224.0" style="-fx-background-color: #FFFFFF;" text="Beverage">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="84.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/Soda.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <children>
+                        <Button fx:id="bt_side" contentDisplay="TOP" mnemonicParsing="false" onAction="#sideClicked" onDragEntered="#mouseEnterSide" onDragExited="#mouseExitSide" prefHeight="109.0" prefWidth="222.0" style="-fx-background-color: #FFFFFF;" text="Side">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="77.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/Chips.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <ImageView fitHeight="122.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/Burger2.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <children>
+                        <Button fx:id="bt_curr_order" mnemonicParsing="false" prefHeight="54.0" prefWidth="58.0" style="-fx-background-color: #FFFFFF;">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/Cart.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="bt_placed_order" mnemonicParsing="false" prefHeight="54.0" prefWidth="58.0" style="-fx-background-color: #FFFFFF;">
+                           <graphic>
+                              <ImageView fitHeight="48.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/Order.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
             </GridPane>
          </children>
