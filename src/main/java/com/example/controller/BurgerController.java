@@ -132,7 +132,8 @@ public class BurgerController {
         cb_quantity.setVisibleRowCount(5);
         rb_single.setSelected(true);
         rb_brioche.setSelected(true);
-
+        tf_price.setEditable(false);
+        tf_price.setFocusTraversable(false);
         setPrice();
 
     }

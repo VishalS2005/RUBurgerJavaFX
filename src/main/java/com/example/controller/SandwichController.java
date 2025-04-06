@@ -68,6 +68,8 @@ public class SandwichController {
         cb_bread.setValue(Bread.BRIOCHE);
         rb_roastBeef.setSelected(true);
 
+        tf_price.setEditable(false);
+        tf_price.setFocusTraversable(false);
         setPrice();
     }
 
