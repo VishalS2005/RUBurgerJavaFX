@@ -19,7 +19,6 @@ public class BurgerController {
 
     NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
 
-
     private MainController mainController;
 
     private Stage stage;
