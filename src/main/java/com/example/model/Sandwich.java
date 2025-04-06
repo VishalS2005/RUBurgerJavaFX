@@ -1,9 +1,13 @@
 package com.example.model;
 
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Sandwich extends MenuItem {
+    NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+
     public final double ROAST_BEEF_PRICE = 10.99;
 
     public final double CHICKEN_PRICE = 8.99;
@@ -41,5 +45,21 @@ public class Sandwich extends MenuItem {
            price += addOn.getPrice();
         }
         return price;
+    }
+
+    @Override
+    public String toString() {
+        return getClassName() + "[" + bread + ", " + protein + "]" + addOns.toString() + "[" + formatter.format(price()) + "][" + quantity + "]";
+    }
+
+    public String getClassName() {
+        return "Sandwich";
+    }
+
+    public static void main(String[] args) {
+        ArrayList<AddOns> addOns = new ArrayList<>();
+        addOns.add(AddOns.AVOCADO);
+        Sandwich sandwich = new Sandwich(Bread.WHEAT_BREAD, Protein.SALMON, addOns, 2);
+        System.out.println(sandwich);
     }
 }

@@ -24,4 +24,9 @@ public enum Side {
             case LARGE -> 1;
         };
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

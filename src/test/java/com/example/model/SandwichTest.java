@@ -27,9 +27,9 @@ public class SandwichTest {
         avocadoCheese.add(AddOns.CHEESE);
         onionsAvocado.add(AddOns.ONIONS);
         onionsAvocado.add(AddOns.AVOCADO);
-        roastBeefLettuceTomatoesOnions = new Sandwich(Bread.BAGEL, Protein.ROAST_BEEF, lettuceTomatoesOnions);
-        salmonAvocadoCheese = new Sandwich(Bread.SOURDOUGH, Protein.SALMON, avocadoCheese);
-        chickenOnionsAvocado =  new Sandwich(Bread.BRIOCHE, Protein.CHICKEN, onionsAvocado);
+        roastBeefLettuceTomatoesOnions = new Sandwich(Bread.BAGEL, Protein.ROAST_BEEF, lettuceTomatoesOnions, 1);
+        salmonAvocadoCheese = new Sandwich(Bread.SOURDOUGH, Protein.SALMON, avocadoCheese, 2);
+        chickenOnionsAvocado =  new Sandwich(Bread.BRIOCHE, Protein.CHICKEN, onionsAvocado, 3);
     }
 
 
@@ -40,11 +40,11 @@ public class SandwichTest {
 
     @Test
     public void salmonAvocadoCheesePrice() {
-        assertEquals(11.49, salmonAvocadoCheese.price(), 0.01);
+        assertEquals(22.98, salmonAvocadoCheese.price(), 0.01);
     }
 
     @Test
     public void chickenOnionsAvocadoPrice() {
-        assertEquals(9.79,  chickenOnionsAvocado.price(), 0.01);
+        assertEquals(29.37,  chickenOnionsAvocado.price(), 0.01);
     }
 }

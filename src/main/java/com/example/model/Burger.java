@@ -23,4 +23,18 @@ public class Burger extends Sandwich {
     public double basePrice() {
         return (doublePatty ?  DOUBLE_PATTY_PRICE : SINGLE_PATTY_PRICE);
     }
+
+    @Override
+    public String getClassName() {
+        return "Burger";
+    }
+
+    public static void main(String[] args) {
+
+        ArrayList<AddOns> addOns = new ArrayList<>();
+        addOns.add(AddOns.CHEESE);
+        addOns.add(AddOns.AVOCADO);
+        Burger burger = new Burger(Bread.BRIOCHE, true, addOns, 1);
+        System.out.println(burger);
+    }
 }
