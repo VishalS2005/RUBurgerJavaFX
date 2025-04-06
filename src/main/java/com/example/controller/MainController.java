@@ -102,6 +102,35 @@ public class MainController {
     }
 
     @FXML
+    protected void displayBeverageView() {
+        Stage view1 = new Stage(); //if we want to use a new window
+        BorderPane root;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/beverage-view.fxml"));
+            root = (BorderPane) loader.load();
+            Scene scene = new Scene(root, 524, 600);
+            //view1.setScene(scene); //if we want to use the new window to draw the scene graph
+            //view1.setTitle("view1");
+            //view1.show();
+            primaryStage.setScene(scene);
+            BeverageController beverageViewController = loader.getController();
+            /*
+              The statement below is to pass the references of the MainController objects
+              to the SecondViewController object so the SecondViewController can call the
+              public methods in the MainController or to navigate back to the main view.
+             */
+            beverageViewController.setMainController(this, view1, primaryStage, primaryScene);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Loading beverage-view.fxml.");
+            alert.setContentText("Couldn't load beverage-view.fxml.");
+            alert.showAndWait();
+        }
+    }
+
+
+    @FXML
     private void mouseEnterBurger() {
         bt_burger.setStyle("-fx-background-color: #decb6b");
     }

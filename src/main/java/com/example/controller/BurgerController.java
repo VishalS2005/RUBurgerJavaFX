@@ -3,7 +3,6 @@ package com.example.controller;
 import com.example.model.AddOns;
 import com.example.model.Bread;
 import com.example.model.Burger;
-import com.example.model.MenuItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
