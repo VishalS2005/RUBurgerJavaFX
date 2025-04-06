@@ -100,7 +100,7 @@ public class BurgerController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/combo-view.fxml"));
             root = (BorderPane) loader.load();
-            Scene scene = new Scene(root, 524, 600);
+            Scene scene = new Scene(root, 600, 524);
             //view1.setScene(scene); //if we want to use the new window to draw the scene graph
             //view1.setTitle("view1");
             //view1.show();
@@ -111,6 +111,7 @@ public class BurgerController {
               to the SecondViewController object so the SecondViewController can call the
               public methods in the MainController or to navigate back to the main view.
              */
+            comboViewController.setSandwich(getBurger());
             comboViewController.setMainController(mainController, view1, primaryStage, primaryScene);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
