@@ -52,7 +52,7 @@ public class MainController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/burger-view.fxml"));
             root = (BorderPane) loader.load();
-            Scene scene = new Scene(root, 524, 600);
+            Scene scene = new Scene(root, 600, 524);
             //view1.setScene(scene); //if we want to use the new window to draw the scene graph
             //view1.setTitle("view1");
             //view1.show();
@@ -80,7 +80,7 @@ public class MainController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/sandwich-view.fxml"));
             root = (BorderPane) loader.load();
-            Scene scene = new Scene(root, 524, 600);
+            Scene scene = new Scene(root, 600, 524);
             //view1.setScene(scene); //if we want to use the new window to draw the scene graph
             //view1.setTitle("view1");
             //view1.show();
@@ -108,7 +108,7 @@ public class MainController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/beverage-view.fxml"));
             root = (BorderPane) loader.load();
-            Scene scene = new Scene(root, 524, 600);
+            Scene scene = new Scene(root, 600  , 524);
             //view1.setScene(scene); //if we want to use the new window to draw the scene graph
             //view1.setTitle("view1");
             //view1.show();
