@@ -101,6 +101,34 @@ public class MainController {
         }
     }
 
+    @FXML
+    protected void displaySidesView() {
+        Stage view1 = new Stage(); //if we want to use a new window
+        BorderPane root;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sides-view.fxml"));
+            root = (BorderPane) loader.load();
+            Scene scene = new Scene(root, 600, 524);
+            //view1.setScene(scene); //if we want to use the new window to draw the scene graph
+            //view1.setTitle("view1");
+            //view1.show();
+            primaryStage.setScene(scene);
+            SidesController sidesViewController = loader.getController();
+            /*
+              The statement below is to pass the references of the MainController objects
+              to the SecondViewController object so the SecondViewController can call the
+              public methods in the MainController or to navigate back to the main view.
+             */
+            sidesViewController.setMainController(this, view1, primaryStage, primaryScene);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Loading sides-view.fxml.");
+            alert.setContentText("Couldn't load sides-view.fxml.");
+            alert.showAndWait();
+        }
+    }
+
     /**
      * When the image button is clicked, a new window(stage) will be displayed.
      * The scene graph associated with the window is second-view.fxml, in which the
