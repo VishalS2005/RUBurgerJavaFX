@@ -1,59 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <BorderPane prefHeight="524.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.ComboController">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.39996337890625" minWidth="0.0" prefWidth="23.1999755859375" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="564.0000732421876" minWidth="10.0" prefWidth="545.4000244140625" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.19995117187506" minWidth="9.7999267578125" prefWidth="28.399975585937455" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="70.59998168945313" minHeight="0.0" prefHeight="6.599997138977045" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="189.0" minHeight="10.0" prefHeight="108.80001220703126" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="141.19998779296873" minHeight="10.0" prefHeight="141.19998779296873" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="189.0" minHeight="10.0" prefHeight="18666.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="141.19998779296873" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <HBox alignment="CENTER" prefHeight="59.0" prefWidth="546.0">
                <children>
-                  <Label text="Combo" />
+                  <Label text="Combo">
+                     <font>
+                        <Font name="Comic Sans MS" size="48.0" />
+                     </font></Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <HBox alignment="CENTER" prefHeight="52.0" prefWidth="565.0" GridPane.rowIndex="1">
                <children>
-                  <Label text="Sandwich: " />
-                  <TextField fx:id="tf_sandwich" prefHeight="26.0" prefWidth="476.0" />
+                  <Label prefHeight="23.0" prefWidth="133.0" text="Sandwich: ">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin></Label>
+                  <TextField fx:id="tf_sandwich" prefHeight="26.0" prefWidth="458.0">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin></TextField>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Label text="Choose a side: " />
+                  <Label text="Choose a side: ">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="16.0" />
+                     </font></Label>
                   <ComboBox fx:id="cb_sides" prefWidth="150.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
                <children>
-                  <Label text="Choose a drink: " />
+                  <Label text="Choose a drink: ">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="16.0" />
+                     </font></Label>
                   <ComboBox fx:id="cb_drinks" prefWidth="150.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
                <children>
-                  <Label text="Quantity:" />
-                  <ComboBox fx:id="cb_quantity" prefHeight="26.0" prefWidth="54.0" />
-                  <Label text="Price: " />
+                  <Label text="Quantity:">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="16.0" />
+                     </font></Label>
+                  <ComboBox fx:id="cb_quantity" prefHeight="26.0" prefWidth="54.0">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin></ComboBox>
+                  <Label text="Price: ">
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="16.0" />
+                     </font></Label>
                   <TextField fx:id="tf_price" prefHeight="26.0" prefWidth="101.0" />
                   <Button mnemonicParsing="false" onAction="#addOrder" text="Add To Order" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
                <children>
                   <Button fx:id="displayMain" mnemonicParsing="false" text="Main Menu" />
                </children>

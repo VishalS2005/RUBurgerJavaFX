@@ -1,7 +1,7 @@
 package com.example.model;
 
 public class Combo extends MenuItem{
-    public final double COMBO_RATE = 2;
+    public static final double COMBO_RATE = 2;
     private Sandwich sandwich;
     private Beverage drink;
     private Side side;
