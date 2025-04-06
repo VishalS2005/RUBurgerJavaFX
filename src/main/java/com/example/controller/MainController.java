@@ -52,7 +52,7 @@ public class MainController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/burger-view.fxml"));
             root = (BorderPane) loader.load();
-            Scene scene = new Scene(root, 500, 600);
+            Scene scene = new Scene(root, 524, 600);
             //view1.setScene(scene); //if we want to use the new window to draw the scene graph
             //view1.setTitle("view1");
             //view1.show();
