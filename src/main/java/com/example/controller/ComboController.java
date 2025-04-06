@@ -89,7 +89,7 @@ public class ComboController {
     public void setSandwich(Sandwich sandwich) {
         this.sandwich = sandwich;
         tf_sandwich.setText(sandwich.toString());
-        tf_price.setText(formatter.format(sandwich.price() + Combo.COMBO_RATE));
+        tf_price.setText(formatter.format(sandwich.price() + sandwich.getQuantity() * Combo.COMBO_RATE));
         tf_price.setEditable(false);
         tf_price.setFocusTraversable(false);
         tf_sandwich.setEditable(false);

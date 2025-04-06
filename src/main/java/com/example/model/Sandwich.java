@@ -47,6 +47,10 @@ public class Sandwich extends MenuItem {
         return price;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
     @Override
     public String toString() {
         return getClassName() + "[" + bread + ", " + protein + "]" + addOns.toString() + "[" + formatter.format(price()) + "][" + quantity + "]";
