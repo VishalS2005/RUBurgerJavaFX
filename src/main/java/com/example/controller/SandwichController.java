@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class BurgerController {
+public class SandwichController {
 
     private MainController mainController;
 
@@ -18,48 +18,6 @@ public class BurgerController {
     private Scene primaryScene;
 
     private Stage primaryStage;
-
-    @FXML
-    private ComboBox<Integer> cb_quantity;
-
-    @FXML
-    private ToggleGroup patty_types;
-
-    @FXML
-    private ToggleGroup bread_types;
-
-    @FXML
-    private ToggleGroup topping_types;
-
-    @FXML
-    private RadioButton rb_single;
-
-    @FXML
-    private RadioButton rb_double;
-
-    @FXML
-    private RadioButton rb_brioche;
-
-    @FXML
-    private RadioButton rb_wheat;
-
-    @FXML
-    private RadioButton rb_pretzel;
-
-    @FXML
-    private CheckBox cb_lettuce;
-
-    @FXML
-    private CheckBox cb_tomato;
-
-    @FXML
-    private CheckBox cb_onion;
-
-    @FXML
-    private CheckBox cb_avocado;
-
-    @FXML
-    private CheckBox cb_cheese;
 
     /**
      * Get the reference to the MainController object.
@@ -108,16 +66,6 @@ public class BurgerController {
             alert.setContentText("Couldn't load combo-view.fxml.");
             alert.showAndWait();
         }
-    }
-
-    /**
-     * Navigate back to the main view.
-     */
-    @FXML
-    private void initialize() {
-        cb_quantity.getItems().addAll(1, 2, 3, 4, 5);
-        cb_quantity.setValue(1);
-        cb_quantity.setVisibleRowCount(5);
     }
 
     @FXML
