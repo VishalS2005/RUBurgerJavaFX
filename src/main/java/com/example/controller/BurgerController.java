@@ -3,7 +3,6 @@ package com.example.controller;
 import com.example.model.AddOns;
 import com.example.model.Bread;
 import com.example.model.Burger;
-import com.example.model.MenuItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -133,7 +132,8 @@ public class BurgerController {
         cb_quantity.setVisibleRowCount(5);
         rb_single.setSelected(true);
         rb_brioche.setSelected(true);
-
+        tf_price.setEditable(false);
+        tf_price.setFocusTraversable(false);
         setPrice();
 
     }

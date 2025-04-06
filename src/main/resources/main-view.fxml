@@ -69,7 +69,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <children>
-                        <Button fx:id="bt_beverage" contentDisplay="TOP" mnemonicParsing="false" onAction="#beverageClicked" onDragEntered="#mouseEnterBeverage" onDragExited="#mouseExitBeverage" prefHeight="110.0" prefWidth="224.0" style="-fx-background-color: #FFFFFF;" text="Beverage">
+                        <Button fx:id="bt_beverage" contentDisplay="TOP" mnemonicParsing="false" onAction="#displayBeverageView" onDragEntered="#mouseEnterBeverage" onDragExited="#mouseExitBeverage" prefHeight="110.0" prefWidth="224.0" style="-fx-background-color: #FFFFFF;" text="Beverage">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
