@@ -1,24 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<BorderPane prefHeight="524.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.BurgerController">
+<BorderPane prefHeight="524.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.BurgerController">
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -83,7 +71,7 @@
                               <Font name="Comic Sans MS Bold" size="16.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="rb_single" mnemonicParsing="false" text="Single">
+                        <RadioButton fx:id="rb_single" mnemonicParsing="false" onAction="#setPrice" text="Single">
                            <opaqueInsets>
                               <Insets left="20.0" />
                            </opaqueInsets>
@@ -94,7 +82,7 @@
                               <ToggleGroup fx:id="patty_types" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="rb_double" mnemonicParsing="false" text="Double" toggleGroup="$patty_types">
+                        <RadioButton fx:id="rb_double" mnemonicParsing="false" onAction="#setPrice" text="Double" toggleGroup="$patty_types">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -114,7 +102,7 @@
                               <Font name="Comic Sans MS Bold" size="16.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="rb_brioche" mnemonicParsing="false" text="Brioche">
+                        <RadioButton fx:id="rb_brioche" mnemonicParsing="false" onAction="#setPrice" text="Brioche">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -122,12 +110,12 @@
                               <ToggleGroup fx:id="bread_types" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="rb_wheat" mnemonicParsing="false" text="Wheat Bread" toggleGroup="$bread_types">
+                        <RadioButton fx:id="rb_wheat" mnemonicParsing="false" onAction="#setPrice" text="Wheat Bread" toggleGroup="$bread_types">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </RadioButton>
-                        <RadioButton fx:id="rb_pretzel" mnemonicParsing="false" text="Pretzel" toggleGroup="$bread_types">
+                        <RadioButton fx:id="rb_pretzel" mnemonicParsing="false" onAction="#setPrice" text="Pretzel" toggleGroup="$bread_types">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -144,27 +132,27 @@
                               <Font name="Comic Sans MS Bold" size="16.0" />
                            </font>
                         </Label>
-                        <CheckBox fx:id="cb_lettuce" mnemonicParsing="false" text="Lettuce">
+                        <CheckBox fx:id="cb_lettuce" mnemonicParsing="false" onAction="#setPrice" text="Lettuce">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </CheckBox>
-                        <CheckBox fx:id="cb_tomato" mnemonicParsing="false" text="Tomato">
+                        <CheckBox fx:id="cb_tomato" mnemonicParsing="false" onAction="#setPrice" text="Tomato">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </CheckBox>
-                        <CheckBox fx:id="cb_onion" mnemonicParsing="false" text="Onion">
+                        <CheckBox fx:id="cb_onion" mnemonicParsing="false" onAction="#setPrice" text="Onion">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </CheckBox>
-                        <CheckBox fx:id="cb_avocado" mnemonicParsing="false" text="Avocado">
+                        <CheckBox fx:id="cb_avocado" mnemonicParsing="false" onAction="#setPrice" text="Avocado">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </CheckBox>
-                        <CheckBox fx:id="cb_cheese" mnemonicParsing="false" text="Cheese">
+                        <CheckBox fx:id="cb_cheese" mnemonicParsing="false" onAction="#setPrice" text="Cheese">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -181,7 +169,7 @@
                               <Font name="Comic Sans MS Bold" size="16.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="cb_quantity" prefWidth="150.0" promptText="1" />
+                        <ComboBox fx:id="cb_quantity" onAction="#setPrice" prefWidth="150.0" promptText="1" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
@@ -191,7 +179,7 @@
                               <Font name="Comic Sans MS" size="16.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="26.0" prefWidth="83.0" />
+                        <TextField fx:id="tf_price" prefHeight="26.0" prefWidth="83.0" />
                         <Button mnemonicParsing="false" onAction="#orderOnClick" text="Add to Order" />
                         <Button mnemonicParsing="false" onAction="#comboOnClick" text="Combo" />
                      </children>

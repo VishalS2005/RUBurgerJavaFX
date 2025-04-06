@@ -6,8 +6,14 @@ public class Combo extends MenuItem{
     private Beverage drink;
     private Side side;
 
+    public Combo(Sandwich sandwich, Beverage drink, Side side) {
+        this.sandwich = sandwich;
+        this.drink = drink;
+        this.side = side;
+    }
+
     @Override
     public double price() {
-        return sandwich.price() + COMBO_RATE;
+        return quantity * (sandwich.price() + COMBO_RATE);
     }
 }

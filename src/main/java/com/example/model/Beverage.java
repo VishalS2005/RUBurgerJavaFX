@@ -12,7 +12,7 @@ public class Beverage extends MenuItem {
 
     @Override
     public double price() {
-        return switch(size) {
+        return quantity * switch(size) {
             case SMALL -> SMALL_PRICE;
             case MEDIUM -> MEDIUM_PRICE;
             case LARGE  -> LARGE_PRICE;

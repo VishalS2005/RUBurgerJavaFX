@@ -1,5 +1,9 @@
 package com.example.controller;
 
+import com.example.model.AddOns;
+import com.example.model.Bread;
+import com.example.model.Burger;
+import com.example.model.MenuItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,8 +12,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class BurgerController {
+
+    NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+
 
     private MainController mainController;
 
@@ -60,6 +70,9 @@ public class BurgerController {
 
     @FXML
     private CheckBox cb_cheese;
+
+    @FXML
+    private TextField tf_price;
 
     /**
      * Get the reference to the MainController object.
@@ -118,6 +131,17 @@ public class BurgerController {
         cb_quantity.getItems().addAll(1, 2, 3, 4, 5);
         cb_quantity.setValue(1);
         cb_quantity.setVisibleRowCount(5);
+        rb_single.setSelected(true);
+        rb_brioche.setSelected(true);
+
+        setPrice();
+
+    }
+
+    @FXML
+    private void setPrice() {
+       Burger burger = getBurger();
+       tf_price.setText(formatter.format(burger.price()));
     }
 
     @FXML
@@ -125,6 +149,49 @@ public class BurgerController {
         //stage.close(); //close the window.
         this.primaryStage.setScene(primaryScene);
         this.primaryStage.show();
+    }
+
+
+    private Burger getBurger() {
+        boolean isDoublePatty = rb_double.isSelected();
+        Bread bread = getBread();
+        ArrayList<AddOns> addOns = getAddOns();
+        int quantity = cb_quantity.getValue();
+        return new Burger(bread, isDoublePatty, addOns, quantity);
+    }
+
+    private ArrayList<AddOns> getAddOns() {
+       ArrayList<AddOns> addOns = new ArrayList<>();
+
+       if(cb_lettuce.isSelected()) {
+           addOns.add(AddOns.LETTUCE);
+       }
+
+       if(cb_tomato.isSelected()) {
+            addOns.add(AddOns.TOMATOES);
+       }
+       if(cb_onion.isSelected()) {
+            addOns.add(AddOns.ONIONS);
+       }
+       if(cb_avocado.isSelected()) {
+            addOns.add(AddOns.AVOCADO);
+       }
+       if(cb_cheese.isSelected()) {
+            addOns.add(AddOns.CHEESE);
+       }
+
+       return addOns;
+    }
+
+    private Bread getBread() {
+        if (rb_brioche.isSelected()) {
+            return Bread.BRIOCHE;
+        } else if(rb_wheat.isSelected()) {
+            return Bread.WHEAT_BREAD;
+        } else if(rb_pretzel.isSelected()) {
+            return Bread.PRETZEL;
+        }
+        return null;
     }
 
     @FXML

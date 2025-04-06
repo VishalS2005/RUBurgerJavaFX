@@ -14,15 +14,16 @@ public class Sandwich extends MenuItem {
     protected Protein protein;
     protected ArrayList<AddOns> addOns;
 
-    public Sandwich(Bread bread, Protein protein, ArrayList<AddOns> addOns) {
+    public Sandwich(Bread bread, Protein protein, ArrayList<AddOns> addOns, int quantity) {
        this.bread = bread;
        this.protein = protein;
        this.addOns = addOns;
+       this.quantity = quantity;
     }
 
     @Override
     public double price() {
-        return basePrice() + priceOfAddOns();
+        return quantity * (basePrice() + priceOfAddOns());
     }
 
     public double basePrice() {

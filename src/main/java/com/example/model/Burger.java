@@ -10,13 +10,13 @@ public class Burger extends Sandwich {
 
     private final boolean doublePatty;
 
-    public Burger(Bread bread, boolean doublePatty, ArrayList<AddOns> addOns) {
-        super(bread, Protein.BEEF_PATTY, addOns);
+    public Burger(Bread bread, boolean doublePatty, ArrayList<AddOns> addOns, int quantity) {
+        super(bread, Protein.BEEF_PATTY, addOns, quantity);
         this.doublePatty = doublePatty;
     }
     @Override
     public double price() {
-       return priceOfAddOns() + basePrice();
+       return quantity * (priceOfAddOns() + basePrice());
     }
 
     @Override
