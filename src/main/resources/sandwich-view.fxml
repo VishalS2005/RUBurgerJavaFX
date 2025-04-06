@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="524.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.BurgerController">
+<BorderPane prefHeight="524.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.SandwichController">
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -43,14 +43,14 @@
                                  <children>
                                     <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@image/Burger.jpg" />
+                                          <Image url="@image/Sandwich.jpg" />
                                        </image>
                                     </ImageView>
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                  <children>
-                                    <Label text="Burgers">
+                                    <Label text="Sandwiches">
                                        <font>
                                           <Font name="Comic Sans MS" size="48.0" />
                                        </font>
@@ -63,7 +63,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <Label text="Patty: ">
+                        <Label text="Bread:">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
@@ -71,30 +71,15 @@
                               <Font name="Comic Sans MS Bold" size="16.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="rb_single" mnemonicParsing="false" onAction="#setPrice" text="Single">
-                           <opaqueInsets>
-                              <Insets left="20.0" />
-                           </opaqueInsets>
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                           <toggleGroup>
-                              <ToggleGroup fx:id="patty_types" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton fx:id="rb_double" mnemonicParsing="false" onAction="#setPrice" text="Double" toggleGroup="$patty_types">
+                        <ComboBox fx:id="cb_bread" onAction="#setPrice" prefWidth="150.0">
                            <opaqueInsets>
                               <Insets />
-                           </opaqueInsets>
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </RadioButton>
+                           </opaqueInsets></ComboBox>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <children>
-                        <Label text="Bread: ">
+                        <Label text="Protein">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
@@ -102,7 +87,7 @@
                               <Font name="Comic Sans MS Bold" size="16.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="rb_brioche" mnemonicParsing="false" onAction="#setPrice" text="Brioche">
+                        <RadioButton fx:id="rb_roastBeef" mnemonicParsing="false" onAction="#setPrice" text="Roast Beef">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -110,12 +95,12 @@
                               <ToggleGroup fx:id="bread_types" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="rb_wheat" mnemonicParsing="false" onAction="#setPrice" text="Wheat Bread" toggleGroup="$bread_types">
+                        <RadioButton fx:id="rb_salmon" mnemonicParsing="false" onAction="#setPrice" text="Salmon" toggleGroup="$bread_types">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </RadioButton>
-                        <RadioButton fx:id="rb_pretzel" mnemonicParsing="false" onAction="#setPrice" text="Pretzel" toggleGroup="$bread_types">
+                        <RadioButton fx:id="rb_chicken" mnemonicParsing="false" onAction="#setPrice" text="Chicken" toggleGroup="$bread_types">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>

@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,8 +9,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class SandwichController {
+
+    NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+
 
     private MainController mainController;
 
@@ -18,6 +25,51 @@ public class SandwichController {
     private Scene primaryScene;
 
     private Stage primaryStage;
+
+    @FXML
+    private RadioButton rb_roastBeef;
+
+    @FXML
+    private RadioButton rb_salmon;
+
+    @FXML
+    private RadioButton rb_chicken;
+
+    @FXML
+    private ComboBox<Integer> cb_quantity;
+
+    @FXML
+    private CheckBox cb_lettuce;
+
+    @FXML
+    private CheckBox cb_tomato;
+
+    @FXML
+    private CheckBox cb_onion;
+
+    @FXML
+    private CheckBox cb_avocado;
+
+    @FXML
+    private CheckBox cb_cheese;
+
+    @FXML
+    private TextField tf_price;
+
+    @FXML
+    private ComboBox<Bread> cb_bread;
+
+    @FXML
+    private void initialize() {
+        cb_quantity.getItems().addAll(1, 2, 3, 4, 5);
+        cb_quantity.setValue(1);
+        cb_quantity.setVisibleRowCount(5);
+        cb_bread.getItems().addAll(Bread.values());
+        cb_bread.setValue(Bread.BRIOCHE);
+        rb_roastBeef.setSelected(true);
+
+        setPrice();
+    }
 
     /**
      * Get the reference to the MainController object.
@@ -68,6 +120,58 @@ public class SandwichController {
         }
     }
 
+    @FXML
+    private void setPrice() {
+        Sandwich sandwich = getSandwich();
+        tf_price.setText(formatter.format(sandwich.price()));
+    }
+
+    private Bread getBread() {
+        return cb_bread.getValue();
+    }
+
+    private Protein getProtein() {
+        if(rb_roastBeef.isSelected()) {
+            return Protein.ROAST_BEEF;
+        } else if(rb_salmon.isSelected()) {
+            return Protein.SALMON;
+        } else if (rb_chicken.isSelected()) {
+           return Protein.CHICKEN;
+        }
+        return null;
+    }
+
+    private Sandwich getSandwich() {
+        Bread bread = getBread();
+        Protein protein = getProtein();
+        ArrayList<AddOns> addOns = getAddOns();
+        int quantity = cb_quantity.getValue();
+        return new Sandwich(bread, protein, addOns, quantity);
+    }
+
+    private ArrayList<AddOns> getAddOns() {
+        ArrayList<AddOns> addOns = new ArrayList<>();
+
+        if(cb_lettuce.isSelected()) {
+            addOns.add(AddOns.LETTUCE);
+        }
+
+        if(cb_tomato.isSelected()) {
+            addOns.add(AddOns.TOMATOES);
+        }
+        if(cb_onion.isSelected()) {
+            addOns.add(AddOns.ONIONS);
+        }
+        if(cb_avocado.isSelected()) {
+            addOns.add(AddOns.AVOCADO);
+        }
+        if(cb_cheese.isSelected()) {
+            addOns.add(AddOns.CHEESE);
+        }
+
+        return addOns;
+
+    }
     @FXML
     public void displayMain() {
         //stage.close(); //close the window.
