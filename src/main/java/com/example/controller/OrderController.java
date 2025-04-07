@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.model.MenuItem;
 import com.example.model.Order;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -7,7 +8,10 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class OrderController {
 
@@ -25,14 +29,17 @@ public class OrderController {
     private TextField tf_total;
 
     @FXML
-    public ComboBox<String> cb_ordernum;
+    public ComboBox<Integer> cb_orderNum;
 
     @FXML
-    public ListView<String> lv_order;
+    public ListView<MenuItem> lv_menuItems;
+
+    private Map<Integer, ArrayList<MenuItem>> orders = new HashMap<>();
 
     @FXML
     private void initialize() {
-
+        tf_total.setEditable(false);
+        tf_total.setFocusTraversable(false);
     }
 
     /**
@@ -58,5 +65,57 @@ public class OrderController {
         this.primaryStage.setScene(primaryScene);
         this.primaryStage.show();
     }
+
+    public void addOrder(Order order) {
+        orders.put(order.getNumber(), order.getItems());
+        cb_orderNum.getItems().add(order.getNumber());
+        cb_orderNum.getSelectionModel().select(cb_orderNum.getItems().size() - 1);
+        refresh();
+    }
+
+    @FXML
+    public void cancelOrder() {
+        Integer selectedOrderNumber = cb_orderNum.getValue();
+        if (selectedOrderNumber != null) {
+            orders.remove(selectedOrderNumber);
+            cb_orderNum.getItems().remove(selectedOrderNumber);
+
+            if (!cb_orderNum.getItems().isEmpty()) {
+                cb_orderNum.getSelectionModel().select(0);
+            } else {
+                lv_menuItems.getItems().clear();
+                tf_total.clear();
+                return;
+            }
+
+            refresh();
+        }
+    }
+
+
+    @FXML
+    public void refresh() {
+        lv_menuItems.getItems().clear(); // Clear the current items in the ListView.
+
+        Integer selectedOrderNumber = cb_orderNum.getSelectionModel().getSelectedItem();
+        if (selectedOrderNumber == null) {
+            return;
+        }
+
+        ArrayList<MenuItem> items = orders.get(selectedOrderNumber);
+        lv_menuItems.getItems().addAll(items);
+        tf_total.setText(formatter.format(getPrice(items)));
+    }
+
+
+    public double getPrice(ArrayList<MenuItem> items) {
+        double price = 0;
+        for (MenuItem item : items) {
+            price += item.price();
+        }
+        return price;
+    }
+
+
 }
 

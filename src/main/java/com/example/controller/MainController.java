@@ -26,10 +26,13 @@ public class MainController {
     @FXML
     private Button bt_side;
 
-    private Stage primaryStage; //the reference of the main window.
-    private Scene primaryScene; //the ref. of the scene set to the primaryStage
+    private Stage primaryStage;
+    private Scene primaryScene;
     private CartController cartViewController;
-    private Scene cartScene; // Add this field to store the cart scene
+    private Scene cartScene;
+
+    private OrderController orderViewController;
+    private Scene orderScene;
 
 
     /**
@@ -165,6 +168,35 @@ public class MainController {
         return cartViewController;
     }
 
+    public void initializeOrderView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/order-view.fxml"));
+            Parent root = loader.load();
+            orderViewController = loader.getController();
+            orderScene = new Scene(root);
+            orderViewController.setMainController(this, null, primaryStage, primaryScene);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Loading order-view.fxml.");
+            alert.setContentText("Couldn't load order-view.fxml.");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    protected void displayOrderView() {
+        if (orderScene== null) {
+            initializeCartView();
+        }
+        primaryStage.setScene(orderScene);
+    }
+
+
+    public OrderController getOrderViewController() {
+        return orderViewController;
+    }
+
 
     @FXML
     protected void displayBeverageView() {
@@ -194,40 +226,6 @@ public class MainController {
         }
     }
 
-    /**
-     * When the image button is clicked, a new window(stage) will be displayed.
-     * The scene graph associated with the window is second-view.fxml, in which the
-     * fx:controller attribute defines the controller as SecondViewController.
-     * When the fxml file is loading, an instance of SecondController will be created
-     * To get the reference of the controller, use the getController() method.
-     */
-    @FXML
-    protected void displayOrderView() {
-        Stage view1 = new Stage(); //if we want to use a new window
-        BorderPane root;
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/order-view.fxml"));
-            root = (BorderPane) loader.load();
-            Scene scene = new Scene(root, 600, 524);
-            //view1.setScene(scene); //if we want to use the new window to draw the scene graph
-            //view1.setTitle("view1");
-            //view1.show();
-            primaryStage.setScene(scene);
-            OrderController orderViewController = loader.getController();
-            /*
-              The statement below is to pass the references of the MainController objects
-              to the SecondViewController object so the SecondViewController can call the
-              public methods in the MainController or to navigate back to the main view.
-             */
-            orderViewController.setMainController(this, view1, primaryStage, primaryScene);
-        } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Loading order-view.fxml.");
-            alert.setContentText("Couldn't load order-view.fxml.");
-            alert.showAndWait();
-        }
-    }
 
     @FXML
     private void mouseEnterBurger() {

@@ -1,14 +1,13 @@
 package com.example.controller;
 
-import com.example.model.Beverage;
-import com.example.model.Flavor;
+import com.example.model.*;
 import com.example.model.MenuItem;
-import com.example.model.Size;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class CartController {
@@ -106,6 +105,18 @@ public class CartController {
         //stage.close(); //close the window.
         this.primaryStage.setScene(primaryScene);
         this.primaryStage.show();
+    }
+
+    @FXML
+    public void sendOrder() {
+        ArrayList<MenuItem> items = new ArrayList<>(lv_cart.getItems());
+        OrderController orderController = mainController.getOrderViewController();
+        orderController.addOrder(new Order(items));
+        lv_cart.getItems().clear();
+        refreshCartDisplay();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Order Placed");
+        alert.showAndWait();
     }
 
 }
