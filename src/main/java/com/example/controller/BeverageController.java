@@ -5,9 +5,7 @@ import com.example.model.Flavor;
 import com.example.model.Size;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -89,6 +87,13 @@ public class BeverageController {
 
 
     @FXML
-    private void orderOnClick() {}
+    private void orderOnClick() {
+        CartController cartController = mainController.getCartViewController();
+        cartController.placeOrder(getBeverage());
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Ordering Burger");
+        alert.setContentText("Beverage added to order.");
+        alert.showAndWait();
+    }
 
 }

@@ -2,6 +2,7 @@ package com.example.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -27,6 +28,9 @@ public class MainController {
 
     private Stage primaryStage; //the reference of the main window.
     private Scene primaryScene; //the ref. of the scene set to the primaryStage
+    private CartController cartViewController;
+    private Scene cartScene; // Add this field to store the cart scene
+
 
     /**
      * Set the reference of the stage and scene before show()
@@ -129,32 +133,14 @@ public class MainController {
         }
     }
 
-    /**
-     * When the image button is clicked, a new window(stage) will be displayed.
-     * The scene graph associated with the window is second-view.fxml, in which the
-     * fx:controller attribute defines the controller as SecondViewController.
-     * When the fxml file is loading, an instance of SecondController will be created
-     * To get the reference of the controller, use the getController() method.
-     */
-    @FXML
-    protected void displayCartView() {
-        Stage view1 = new Stage(); //if we want to use a new window
-        BorderPane root;
+
+    public void initializeCartView() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/cart-view.fxml"));
-            root = (BorderPane) loader.load();
-            Scene scene = new Scene(root, 600, 524);
-            //view1.setScene(scene); //if we want to use the new window to draw the scene graph
-            //view1.setTitle("view1");
-            //view1.show();
-            primaryStage.setScene(scene);
-            CartController cartViewController = loader.getController();
-            /*
-              The statement below is to pass the references of the MainController objects
-              to the SecondViewController object so the SecondViewController can call the
-              public methods in the MainController or to navigate back to the main view.
-             */
-            cartViewController.setMainController(this, view1, primaryStage, primaryScene);
+            Parent root = loader.load();
+            cartViewController = loader.getController();
+            cartScene = new Scene(root);
+            cartViewController.setMainController(this, null, primaryStage, primaryScene);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -163,6 +149,22 @@ public class MainController {
             alert.showAndWait();
         }
     }
+
+    @FXML
+    protected void displayCartView() {
+        if (cartScene == null) {
+            initializeCartView();
+        }
+        primaryStage.setScene(cartScene);
+        // Refresh the cart view if necessary
+        cartViewController.refreshCartDisplay();
+    }
+
+
+    public CartController getCartViewController() {
+        return cartViewController;
+    }
+
 
     @FXML
     protected void displayBeverageView() {
