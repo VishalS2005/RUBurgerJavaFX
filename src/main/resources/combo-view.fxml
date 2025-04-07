@@ -84,7 +84,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
                <children>
-                  <Button fx:id="displayMain" mnemonicParsing="false" text="Main Menu" />
+                  <Button mnemonicParsing="false" onAction="#displayMain" text="Main Menu" />
                </children>
             </HBox>
          </children>
