@@ -17,7 +17,6 @@ public class Application extends javafx.application.Application {
         stage.setTitle("Main");
         stage.setScene(scene);
         mainController.initializeCartView();
-        mainController.initializeOrderView();
         stage.show();
     }
 
