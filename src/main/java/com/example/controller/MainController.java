@@ -26,6 +26,12 @@ public class MainController {
     @FXML
     private Button bt_side;
 
+    @FXML
+    private Button bt_cart;
+
+    @FXML
+    private Button bt_order;
+
     private Stage primaryStage;
     private Scene primaryScene;
     private CartController cartViewController;
@@ -189,14 +195,13 @@ public class MainController {
         }
     }
 
-
     @FXML
-    private void mouseEnterBurger() {
+    public void mouseEnterBurger() {
         bt_burger.setStyle("-fx-background-color: #decb6b");
     }
 
     @FXML
-    private void mouseExitBurger() {
+    public void mouseExitBurger() {
         bt_burger.setStyle("-fx-background-color: #FFFFFF");
     }
 
@@ -204,45 +209,54 @@ public class MainController {
     private void sandwichClicked() {}
 
     @FXML
-    private void mouseEnterSandwich() {
+    public void mouseEnterSandwich() {
         bt_sandwich.setStyle("-fx-background-color: #decb6b");
     }
 
     @FXML
-    private void mouseExitSandwich() {
+    public void mouseExitSandwich() {
         bt_sandwich.setStyle("-fx-background-color: #FFFFFF");
     }
 
     @FXML
-    private void beverageClicked() {}
-
-    @FXML
-    private void mouseEnterBeverage() {
+    public void mouseEnterBeverage() {
         bt_beverage.setStyle("-fx-background-color: #decb6b");
     }
 
     @FXML
-    private void mouseExitBeverage() {
+    public void mouseExitBeverage() {
         bt_beverage.setStyle("-fx-background-color: #FFFFFF");
     }
 
     @FXML
-    private void sideClicked() {}
-
-    @FXML
-    private void mouseEnterSide() {
+    public void mouseEnterSide() {
         bt_side.setStyle("-fx-background-color: #decb6b");
     }
 
     @FXML
-    private void mouseExitSide() {
+    public void mouseExitSide() {
         bt_side.setStyle("-fx-background-color: #FFFFFF");
     }
 
     @FXML
-    private void currentOrderClicked() {}
+    public void mouseEnterCart() {
+        bt_cart.setStyle("-fx-background-color: #decb6b");
+    }
 
     @FXML
-    private void placedOrderClicked() {}
+    public void mouseExitCart() {
+        bt_cart.setStyle("-fx-background-color: #FFFFFF");
+    }
+
+    @FXML
+    public void mouseEnterOrder() {
+        bt_order.setStyle("-fx-background-color: #decb6b");
+    }
+
+    @FXML
+    public void mouseExitOrder() {
+        bt_order.setStyle("-fx-background-color: #FFFFFF");
+    }
+
 
 }
