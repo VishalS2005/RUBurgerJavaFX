@@ -25,8 +25,6 @@ public class BurgerController {
 
     private Stage primaryStage;
 
-    private Stage stage;
-
     @FXML
     private ComboBox<Integer> cb_quantity;
 
@@ -77,14 +75,14 @@ public class BurgerController {
      * We can call any public method defined in the controller through the reference.
      */
     public void setMainController (MainController controller,
-                                   Stage stage,
                                    Stage primaryStage,
                                    Scene primaryScene) {
-        mainController = controller;
-        this.stage = stage;
+        this. mainController = controller;
         this.primaryStage = primaryStage;
         this.primaryScene = primaryScene;
-    }    /**
+    }
+
+    /**
      * When the image button is clicked, a new window(stage) will be displayed.
      * The scene graph associated with the window is second-view.fxml, in which the
      * fx:controller attribute defines the controller as SecondViewController.
@@ -137,7 +135,6 @@ public class BurgerController {
 
     @FXML
     public void displayMain() {
-        //stage.close(); //close the window.
         this.primaryStage.setScene(primaryScene);
         this.primaryStage.show();
     }
