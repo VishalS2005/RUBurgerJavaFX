@@ -63,9 +63,11 @@ public class CartController {
      * We can call any public method defined in the controller through the reference.
      */
     public void setMainController (MainController controller,
+                                   Stage stage,
                                    Stage primaryStage,
                                    Scene primaryScene) {
-        this.mainController = controller;
+        mainController = controller;
+        this.stage = stage;
         this.primaryStage = primaryStage;
         this.primaryScene = primaryScene;
     }
