@@ -1,9 +1,6 @@
 package com.example.controller;
 
-import com.example.model.Combo;
-import com.example.model.Flavor;
-import com.example.model.Sandwich;
-import com.example.model.Side;
+import com.example.model.*;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -74,7 +71,26 @@ public class ComboController {
     }
 
     @FXML
-    private void addOrder() {}
+    private void addOrder() {
+        Combo combo = new Combo(sandwich, getBeverage(), cb_sides.getValue());
+        CartController cartController = mainController.getCartViewController();
+        cartController.placeOrder(combo);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Ordering Combo");
+        alert.setContentText("Combo added to order.");
+        alert.showAndWait();
+    }
+
+    private Beverage getBeverage() {
+        if(cb_drinks.getValue() == Flavor.COLA) {
+            return new Beverage(Size.SMALL, Flavor.COLA, 1);
+        } else if (cb_drinks.getValue() == Flavor.TEA) {
+            return new Beverage(Size.SMALL, Flavor.TEA, 1);
+        } else if (cb_drinks.getValue() == Flavor.JUICE) {
+            return new Beverage(Size.SMALL, Flavor.JUICE, 1);
+        }
+        return null;
+    }
 
     /**
      * Navigate back to the main view.

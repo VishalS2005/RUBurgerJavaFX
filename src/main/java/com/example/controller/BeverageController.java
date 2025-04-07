@@ -88,10 +88,16 @@ public class BeverageController {
 
     @FXML
     private void orderOnClick() {
+        if(lv_flavors.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Please Select a Flavor");
+            alert.showAndWait();
+            return;
+        }
         CartController cartController = mainController.getCartViewController();
         cartController.placeOrder(getBeverage());
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Ordering Burger");
+        alert.setHeaderText("Ordering Beverage");
         alert.setContentText("Beverage added to order.");
         alert.showAndWait();
     }

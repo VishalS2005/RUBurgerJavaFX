@@ -183,6 +183,13 @@ public class SandwichController {
     }
 
     @FXML
-    private void orderOnClick() {}
+    private void orderOnClick() {
+        CartController cartController = mainController.getCartViewController();
+        cartController.placeOrder(getSandwich());
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Ordering Sandwich");
+        alert.setContentText("Sandwich added to order.");
+        alert.showAndWait();
+    }
 
 }

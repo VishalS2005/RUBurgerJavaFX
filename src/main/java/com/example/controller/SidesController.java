@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.model.*;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -88,6 +89,13 @@ public class SidesController {
 
 
     @FXML
-    private void orderOnClick() {}
+    private void orderOnClick() {
+        CartController cartController = mainController.getCartViewController();
+        cartController.placeOrder(getSides());
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Ordering Sides");
+        alert.setContentText("Sides added to order.");
+        alert.showAndWait();
+    }
 
 }

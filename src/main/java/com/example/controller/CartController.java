@@ -39,7 +39,12 @@ public class CartController {
 
     @FXML
     private void initialize() {
-
+        tf_subtotal.setEditable(false);
+        tf_subtotal.setFocusTraversable(false);
+        tf_salestax.setEditable(false);
+        tf_salestax.setFocusTraversable(false);
+        tf_totalamt.setEditable(false);
+        tf_totalamt.setFocusTraversable(false);
     }
 
     @FXML
@@ -48,7 +53,11 @@ public class CartController {
     }
 
     @FXML
-    public void removeOrder() {}
+    public void removeOrder() {
+        lv_cart.getItems().remove(lv_cart.getSelectionModel().getSelectedItem());
+        updateTotals();
+    }
+
 
     /**
      * Get the reference to the MainController object.
@@ -99,8 +108,5 @@ public class CartController {
         this.primaryStage.show();
     }
 
-    public Stage getCartStage() {
-        return stage;
-    }
 }
 

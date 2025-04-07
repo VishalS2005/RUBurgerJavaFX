@@ -196,6 +196,13 @@ public class BurgerController {
     }
 
     @FXML
-    private void orderOnClick() {}
+    private void orderOnClick() {
+        CartController cartController = mainController.getCartViewController();
+        cartController.placeOrder(getBurger());
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Ordering Burger");
+        alert.setContentText("Burger added to order.");
+        alert.showAndWait();
+    }
 
 }
