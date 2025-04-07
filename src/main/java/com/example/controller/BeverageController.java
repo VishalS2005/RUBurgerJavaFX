@@ -17,8 +17,6 @@ public class BeverageController {
 
     private MainController mainController;
 
-    private Stage stage;
-
     private Scene primaryScene;
 
     private Stage primaryStage;
@@ -40,11 +38,9 @@ public class BeverageController {
      * We can call any public method defined in the controller through the reference.
      */
     public void setMainController (MainController controller,
-                                   Stage stage,
                                    Stage primaryStage,
                                    Scene primaryScene) {
-        mainController = controller;
-        this.stage = stage;
+        this.mainController = controller;
         this.primaryStage = primaryStage;
         this.primaryScene = primaryScene;
     }
@@ -80,7 +76,6 @@ public class BeverageController {
 
     @FXML
     public void displayMain() {
-        //stage.close(); //close the window.
         this.primaryStage.setScene(primaryScene);
         this.primaryStage.show();
     }

@@ -20,8 +20,6 @@ public class SandwichController {
 
     private MainController mainController;
 
-    private Stage stage;
-
     private Scene primaryScene;
 
     private Stage primaryStage;
@@ -78,11 +76,9 @@ public class SandwichController {
      * We can call any public method defined in the controller through the reference.
      */
     public void setMainController (MainController controller,
-                                   Stage stage,
                                    Stage primaryStage,
                                    Scene primaryScene) {
-        mainController = controller;
-        this.stage = stage;
+        this.mainController = controller;
         this.primaryStage = primaryStage;
         this.primaryScene = primaryScene;
     }
@@ -96,7 +92,6 @@ public class SandwichController {
      */
     @FXML
     protected void comboOnClick() {
-        Stage view1 = new Stage();
         BorderPane root;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/combo-view.fxml"));
@@ -171,7 +166,6 @@ public class SandwichController {
     }
     @FXML
     public void displayMain() {
-        //stage.close(); //close the window.
         this.primaryStage.setScene(primaryScene);
         this.primaryStage.show();
     }

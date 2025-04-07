@@ -93,7 +93,6 @@ public class ComboController {
      */
     @FXML
     public void displayMain() {
-        //stage.close(); //close the window.
         this.primaryStage.setScene(primaryScene);
         this.primaryStage.show();
     }

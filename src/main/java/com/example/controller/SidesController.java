@@ -15,10 +15,7 @@ public class SidesController {
 
     NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
 
-
     private MainController mainController;
-
-    private Stage stage;
 
     private Scene primaryScene;
 
@@ -36,22 +33,17 @@ public class SidesController {
     @FXML
     private ComboBox<Integer> cb_quantity;
 
-
     /**
      * Get the reference to the MainController object.
      * We can call any public method defined in the controller through the reference.
      */
     public void setMainController (MainController controller,
-                                   Stage stage,
                                    Stage primaryStage,
                                    Scene primaryScene) {
         mainController = controller;
-        this.stage = stage;
         this.primaryStage = primaryStage;
         this.primaryScene = primaryScene;
     }
-
-
 
     /**
      * Navigate back to the main view.
@@ -82,11 +74,9 @@ public class SidesController {
 
     @FXML
     public void displayMain() {
-        //stage.close(); //close the window.
         this.primaryStage.setScene(primaryScene);
         this.primaryStage.show();
     }
-
 
     @FXML
     private void orderOnClick() {
@@ -97,5 +87,4 @@ public class SidesController {
         alert.setContentText("Sides added to order.");
         alert.showAndWait();
     }
-
 }
