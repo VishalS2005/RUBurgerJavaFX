@@ -103,7 +103,7 @@
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <children>
                         <Button mnemonicParsing="false" onAction="#removeOrder" prefHeight="26.0" prefWidth="158.0" text="Remove Selected Item" />
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="158.0" text="Place Order">
+                        <Button mnemonicParsing="false" onAction="#sendOrder" prefHeight="26.0" prefWidth="158.0" text="Place Order">
                            <HBox.margin>
                               <Insets left="30.0" />
                            </HBox.margin>
