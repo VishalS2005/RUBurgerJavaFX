@@ -96,24 +96,16 @@ public class SandwichController {
      */
     @FXML
     protected void comboOnClick() {
-        Stage view1 = new Stage(); //if we want to use a new window
+        Stage view1 = new Stage();
         BorderPane root;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/combo-view.fxml"));
             root = (BorderPane) loader.load();
             Scene scene = new Scene(root, 600, 524);
-            //view1.setScene(scene); //if we want to use the new window to draw the scene graph
-            //view1.setTitle("view1");
-            //view1.show();
             primaryStage.setScene(scene);
             ComboController comboViewController = loader.getController();
-            /*
-              The statement below is to pass the references of the MainController objects
-              to the SecondViewController object so the SecondViewController can call the
-              public methods in the MainController or to navigate back to the main view.
-             */
             comboViewController.setSandwich(getSandwich());
-            comboViewController.setMainController(mainController, view1, primaryStage, primaryScene);
+            comboViewController.setMainController(mainController, primaryStage, primaryScene);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");

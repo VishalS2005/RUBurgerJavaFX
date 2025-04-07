@@ -27,8 +27,11 @@ public class MainController {
     private Button bt_side;
 
     private Stage primaryStage; //the reference of the main window.
+
     private Scene primaryScene; //the ref. of the scene set to the primaryStage
+
     private CartController cartViewController;
+
     private Scene cartScene; // Add this field to store the cart scene
 
 
@@ -48,26 +51,20 @@ public class MainController {
      * fx:controller attribute defines the controller as SecondViewController.
      * When the fxml file is loading, an instance of SecondController will be created
      * To get the reference of the controller, use the getController() method.
+     * The setMainController is to pass the references of the MainController objects
+     * to the SecondViewController object so the SecondViewController can call the
+     * public methods in the MainController or to navigate back to the main view.
      */
     @FXML
     protected void displayBurgerView() {
-        Stage view1 = new Stage(); //if we want to use a new window
         BorderPane root;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/burger-view.fxml"));
             root = (BorderPane) loader.load();
             Scene scene = new Scene(root, 600, 524);
-            //view1.setScene(scene); //if we want to use the new window to draw the scene graph
-            //view1.setTitle("view1");
-            //view1.show();
             primaryStage.setScene(scene);
             BurgerController burgerViewController = loader.getController();
-            /*
-              The statement below is to pass the references of the MainController objects
-              to the SecondViewController object so the SecondViewController can call the
-              public methods in the MainController or to navigate back to the main view.
-             */
-            burgerViewController.setMainController(this, view1, primaryStage, primaryScene);
+            burgerViewController.setMainController(this, primaryStage, primaryScene);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -106,24 +103,15 @@ public class MainController {
     }
 
     @FXML
-    protected void displaySidesView() {
-        Stage view1 = new Stage(); //if we want to use a new window
+    protected void displaySidesView() {//if we want to use a new window
         BorderPane root;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/sides-view.fxml"));
             root = (BorderPane) loader.load();
             Scene scene = new Scene(root, 600, 524);
-            //view1.setScene(scene); //if we want to use the new window to draw the scene graph
-            //view1.setTitle("view1");
-            //view1.show();
             primaryStage.setScene(scene);
             SidesController sidesViewController = loader.getController();
-            /*
-              The statement below is to pass the references of the MainController objects
-              to the SecondViewController object so the SecondViewController can call the
-              public methods in the MainController or to navigate back to the main view.
-             */
-            sidesViewController.setMainController(this, view1, primaryStage, primaryScene);
+            sidesViewController.setMainController(this, primaryStage, primaryScene);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -133,14 +121,13 @@ public class MainController {
         }
     }
 
-
     public void initializeCartView() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/cart-view.fxml"));
             Parent root = loader.load();
             cartViewController = loader.getController();
             cartScene = new Scene(root);
-            cartViewController.setMainController(this, null, primaryStage, primaryScene);
+            cartViewController.setMainController(this, primaryStage, primaryScene);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -160,31 +147,20 @@ public class MainController {
         cartViewController.refreshCartDisplay();
     }
 
-
     public CartController getCartViewController() {
         return cartViewController;
     }
 
-
     @FXML
     protected void displayBeverageView() {
-        Stage view1 = new Stage(); //if we want to use a new window
         BorderPane root;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/beverage-view.fxml"));
             root = (BorderPane) loader.load();
             Scene scene = new Scene(root, 600  , 524);
-            //view1.setScene(scene); //if we want to use the new window to draw the scene graph
-            //view1.setTitle("view1");
-            //view1.show();
             primaryStage.setScene(scene);
             BeverageController beverageViewController = loader.getController();
-            /*
-              The statement below is to pass the references of the MainController objects
-              to the SecondViewController object so the SecondViewController can call the
-              public methods in the MainController or to navigate back to the main view.
-             */
-            beverageViewController.setMainController(this, view1, primaryStage, primaryScene);
+            beverageViewController.setMainController(this, primaryStage, primaryScene);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -203,23 +179,14 @@ public class MainController {
      */
     @FXML
     protected void displayOrderView() {
-        Stage view1 = new Stage(); //if we want to use a new window
         BorderPane root;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/order-view.fxml"));
             root = (BorderPane) loader.load();
             Scene scene = new Scene(root, 600, 524);
-            //view1.setScene(scene); //if we want to use the new window to draw the scene graph
-            //view1.setTitle("view1");
-            //view1.show();
             primaryStage.setScene(scene);
             OrderController orderViewController = loader.getController();
-            /*
-              The statement below is to pass the references of the MainController objects
-              to the SecondViewController object so the SecondViewController can call the
-              public methods in the MainController or to navigate back to the main view.
-             */
-            orderViewController.setMainController(this, view1, primaryStage, primaryScene);
+            orderViewController.setMainController(this, primaryStage, primaryScene);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -240,9 +207,6 @@ public class MainController {
     }
 
     @FXML
-    private void sandwichClicked() {}
-
-    @FXML
     private void mouseEnterSandwich() {
         bt_sandwich.setStyle("-fx-background-color: #decb6b");
     }
@@ -251,9 +215,6 @@ public class MainController {
     private void mouseExitSandwich() {
         bt_sandwich.setStyle("-fx-background-color: #FFFFFF");
     }
-
-    @FXML
-    private void beverageClicked() {}
 
     @FXML
     private void mouseEnterBeverage() {
@@ -266,9 +227,6 @@ public class MainController {
     }
 
     @FXML
-    private void sideClicked() {}
-
-    @FXML
     private void mouseEnterSide() {
         bt_side.setStyle("-fx-background-color: #decb6b");
     }
@@ -277,11 +235,5 @@ public class MainController {
     private void mouseExitSide() {
         bt_side.setStyle("-fx-background-color: #FFFFFF");
     }
-
-    @FXML
-    private void currentOrderClicked() {}
-
-    @FXML
-    private void placedOrderClicked() {}
 
 }
