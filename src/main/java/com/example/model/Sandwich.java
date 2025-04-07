@@ -53,11 +53,11 @@ public class Sandwich extends MenuItem {
 
     @Override
     public String toString() {
-        return getClassName() + "[" + bread + ", " + protein + "]" + addOns.toString() + "[" + formatter.format(price()) + "][" + quantity + "]";
+        return  getIngredients() + "[" + formatter.format(price()) + "][" + quantity + "]";
     }
 
-    public String getClassName() {
-        return "Sandwich";
+    public String getIngredients() {
+        return "Sandwich[" + bread + ", " + protein + "]" + addOns.toString();
     }
 
     public static void main(String[] args) {

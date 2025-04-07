@@ -17,6 +17,8 @@ public class OrderController {
 
     NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
 
+    private double TAX_RATE = 1.06625;
+
     private MainController mainController;
 
     private Stage stage;
@@ -113,7 +115,7 @@ public class OrderController {
         for (MenuItem item : items) {
             price += item.price();
         }
-        return price;
+        return TAX_RATE * price;
     }
 
 

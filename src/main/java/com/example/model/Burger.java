@@ -24,17 +24,24 @@ public class Burger extends Sandwich {
         return (doublePatty ?  DOUBLE_PATTY_PRICE : SINGLE_PATTY_PRICE);
     }
 
+
     @Override
-    public String getClassName() {
-        return "Burger";
+    public String toString() {
+        return  getIngredients() + "[" + formatter.format(price()) + "][" + quantity + "]";
+    }
+
+    @Override
+    public String getIngredients() {
+        return "Burger, " + (doublePatty? "double[" : "single[") + bread + "]" +  addOns.toString();
     }
 
     public static void main(String[] args) {
 
         ArrayList<AddOns> addOns = new ArrayList<>();
+        addOns.add(AddOns.LETTUCE);
+        addOns.add(AddOns.TOMATOES);
         addOns.add(AddOns.CHEESE);
-        addOns.add(AddOns.AVOCADO);
-        Burger burger = new Burger(Bread.BRIOCHE, true, addOns, 1);
+        Burger burger = new Burger(Bread.WHEAT_BREAD, true, addOns, 2);
         System.out.println(burger);
     }
 }

@@ -62,7 +62,7 @@ public class BeverageController {
         lv_flavors.getItems().addAll(Flavor.values());
         tf_price.setEditable(false);
         tf_price.setFocusTraversable(false);
-        cb_size.setValue(Size.SMALL);
+        cb_size.setValue(Size.MEDIUM);
         cb_quantity.setValue(1);
         setPrice();
     }

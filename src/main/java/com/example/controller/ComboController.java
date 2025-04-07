@@ -68,7 +68,7 @@ public class ComboController {
 
     @FXML
     private void addOrder() {
-        Combo combo = new Combo(sandwich, getBeverage(), cb_sides.getValue());
+        Combo combo = new Combo(sandwich, getBeverage(), cb_sides.getValue(), cb_quantity.getValue());
         CartController cartController = mainController.getCartViewController();
         cartController.placeOrder(combo);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -79,11 +79,11 @@ public class ComboController {
 
     private Beverage getBeverage() {
         if(cb_drinks.getValue() == Flavor.COLA) {
-            return new Beverage(Size.SMALL, Flavor.COLA, 1);
+            return new Beverage(Size.MEDIUM, Flavor.COLA, 1);
         } else if (cb_drinks.getValue() == Flavor.TEA) {
-            return new Beverage(Size.SMALL, Flavor.TEA, 1);
+            return new Beverage(Size.MEDIUM, Flavor.TEA, 1);
         } else if (cb_drinks.getValue() == Flavor.JUICE) {
-            return new Beverage(Size.SMALL, Flavor.JUICE, 1);
+            return new Beverage(Size.MEDIUM, Flavor.JUICE, 1);
         }
         return null;
     }
@@ -100,12 +100,18 @@ public class ComboController {
 
     public void setSandwich(Sandwich sandwich) {
         this.sandwich = sandwich;
-        tf_sandwich.setText(sandwich.toString());
-        tf_price.setText(formatter.format(sandwich.price() + sandwich.getQuantity() * Combo.COMBO_RATE));
+        tf_sandwich.setText(sandwich.getIngredients());
+        refresh();
         tf_price.setEditable(false);
         tf_price.setFocusTraversable(false);
         tf_sandwich.setEditable(false);
         tf_sandwich.setFocusTraversable(false);
+    }
+
+    @FXML
+    public void refresh() {
+        double price = new Combo(sandwich, getBeverage(), cb_sides.getValue(), cb_quantity.getValue()).price();
+        tf_price.setText(formatter.format(price));
     }
 
 }

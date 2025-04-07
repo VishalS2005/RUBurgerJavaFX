@@ -104,7 +104,9 @@ public class SandwichController {
             Scene scene = new Scene(root, 600, 524);
             primaryStage.setScene(scene);
             ComboController comboViewController = loader.getController();
-            comboViewController.setSandwich(getSandwich());
+            Sandwich sandwich = getSandwich();
+            sandwich.setQuantity(1);
+            comboViewController.setSandwich(sandwich);
             comboViewController.setMainController(mainController, primaryStage, primaryScene);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);

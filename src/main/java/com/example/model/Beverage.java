@@ -32,7 +32,11 @@ public class Beverage extends MenuItem {
 
     @Override
     public String toString() {
-        return flavor + ", " + size + " " + formatter.format(price()) + "[" + quantity + "]";
+        return getIngredients() + " " + formatter.format(price()) + "[" + quantity + "]";
+    }
+
+    public String getIngredients() {
+        return flavor + ", " + size;
     }
 
     public static void main(String[] args) {

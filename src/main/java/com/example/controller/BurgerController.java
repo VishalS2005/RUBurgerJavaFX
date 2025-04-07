@@ -100,7 +100,9 @@ public class BurgerController {
             Scene scene = new Scene(root, 600, 524);
             primaryStage.setScene(scene);
             ComboController comboViewController = loader.getController();
-            comboViewController.setSandwich(getBurger());
+            Burger burger = getBurger();
+            burger.setQuantity(1);
+            comboViewController.setSandwich(burger);
             comboViewController.setMainController(mainController, primaryStage, primaryScene);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);

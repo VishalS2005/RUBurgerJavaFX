@@ -67,7 +67,7 @@
                      <font>
                         <Font name="Comic Sans MS Bold" size="16.0" />
                      </font></Label>
-                  <ComboBox fx:id="cb_quantity" prefHeight="26.0" prefWidth="54.0">
+                  <ComboBox fx:id="cb_quantity" onAction="#refresh" prefHeight="26.0" prefWidth="54.0">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin></ComboBox>
