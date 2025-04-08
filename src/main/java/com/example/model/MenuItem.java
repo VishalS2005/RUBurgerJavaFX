@@ -6,6 +6,7 @@ package com.example.model;
  * @author Vishal Saravanan, Yining Chen
  */
 public abstract class MenuItem {
+
     /**
      * The quantity of this MenuItem.
      */
