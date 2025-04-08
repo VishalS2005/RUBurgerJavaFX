@@ -6,60 +6,89 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Main controller class for handling navigation between different views in the application.
+ * Manages the primary stage and scenes for burger, sandwich, beverage, sides, cart, and order views.
+ *
+ * @author Vishal Saravanan, Yining Chen
+ */
 public class MainController {
 
+    /**
+     * The primary stage of the application.
+     */
+    private Stage primaryStage;
+
+    /**
+     * The primary scene of the application.
+     */
+    private Scene primaryScene;
+
+    /**
+     * Controller for the cart view.
+     */
+    private CartController cartViewController;
+
+    /**
+     * Scene for the cart view.
+     */
+    private Scene cartScene;
+
+    /**
+     * Controller for the order view.
+     */
+    private OrderController orderViewController;
+
+    /**
+     * Scene for the order view.
+     */
+    private Scene orderScene;
+
+    /**
+     * Button for navigating to the burger view.
+     */
     @FXML
     private Button bt_burger;
 
+    /**
+     * Button for navigating to the sandwich view.
+     */
     @FXML
     private Button bt_sandwich;
 
+    /**
+     * Button for navigating to the beverage view.
+     */
     @FXML
     private Button bt_beverage;
 
+    /**
+     * Button for navigating to the sides view.
+     */
     @FXML
     private Button bt_side;
 
+    /**
+     * Button for navigating to the cart view.
+     */
     @FXML
     private Button bt_cart;
 
+    /**
+     * Button for navigating to the order view.
+     */
     @FXML
     private Button bt_order;
 
-    private Stage primaryStage;
-    private Scene primaryScene;
-    private CartController cartViewController;
-    private Scene cartScene;
-
-    private OrderController orderViewController;
-    private Scene orderScene;
-
-
     /**
-     * Set the reference of the stage and scene before show()
-     * @param stage the stage used to display the scene
-     * @param scene the scene set to the stage
-     */
-    public void setPrimaryStage(Stage stage, Scene scene) {
-        primaryStage = stage;
-        primaryScene = scene;
-    }
-
-    /**
-     * When the image button is clicked, a new window(stage) will be displayed.
-     * The scene graph associated with the window is second-view.fxml, in which the
-     * fx:controller attribute defines the controller as SecondViewController.
-     * When the fxml file is loading, an instance of SecondController will be created
-     * To get the reference of the controller, use the getController() method.
-     * The statement below is to pass the references of the MainController objects
-     * to the SecondViewController object so the SecondViewController can call the
-     * public methods in the MainController or to navigate back to the main view.
+     * Loads and displays the burger view when the burger button is clicked.
+     * Sets up the controller communication between main and burger views.
+     * Shows an error if burger-view.fxml file cannot be loaded.
      */
     @FXML
     protected void displayBurgerView() {
@@ -68,9 +97,9 @@ public class MainController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/burger-view.fxml"));
             root = (BorderPane) loader.load();
             Scene scene = new Scene(root, 600, 524);
-            primaryStage.setScene(scene);
+            this.primaryStage.setScene(scene);
             BurgerController burgerViewController = loader.getController();
-            burgerViewController.setMainController(this, primaryStage, primaryScene);
+            burgerViewController.setMainController(this, this.primaryStage, this.primaryScene);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -80,6 +109,11 @@ public class MainController {
         }
     }
 
+    /**
+     * Loads and displays the burger view when the sandwich button is clicked.
+     * Sets up the controller communication between main and sandwich views.
+     * Shows an error if sandwich-view.fxml file cannot be loaded.
+     */
     @FXML
     protected void displaySandwichView() {
         BorderPane root;
@@ -87,9 +121,9 @@ public class MainController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/sandwich-view.fxml"));
             root = (BorderPane) loader.load();
             Scene scene = new Scene(root, 600, 524);
-            primaryStage.setScene(scene);
+            this.primaryStage.setScene(scene);
             SandwichController sandwichViewController = loader.getController();
-            sandwichViewController.setMainController(this, primaryStage, primaryScene);
+            sandwichViewController.setMainController(this, this.primaryStage, this.primaryScene);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -99,6 +133,11 @@ public class MainController {
         }
     }
 
+    /**
+     * Loads and displays the sides view when the sides button is clicked.
+     * Sets up the controller communication between main and sides views.
+     * Shows an error if sides-view.fxml file cannot be loaded.
+     */
     @FXML
     protected void displaySidesView() {
         BorderPane root;
@@ -106,9 +145,9 @@ public class MainController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/sides-view.fxml"));
             root = (BorderPane) loader.load();
             Scene scene = new Scene(root, 600, 524);
-            primaryStage.setScene(scene);
+            this.primaryStage.setScene(scene);
             SidesController sidesViewController = loader.getController();
-            sidesViewController.setMainController(this, primaryStage, primaryScene);
+            sidesViewController.setMainController(this, this.primaryStage, this.primaryScene);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -118,64 +157,11 @@ public class MainController {
         }
     }
 
-    public void initializeCartView() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/cart-view.fxml"));
-            Parent root = loader.load();
-            cartViewController = loader.getController();
-            cartScene = new Scene(root);
-            cartViewController.setMainController(this, primaryStage, primaryScene);
-        } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Loading cart-view.fxml.");
-            alert.setContentText("Couldn't load cart-view.fxml.");
-            alert.showAndWait();
-        }
-    }
-
-    @FXML
-    protected void displayCartView() {
-        if (cartScene == null) {
-            initializeCartView();
-        }
-        primaryStage.setScene(cartScene);
-        // Refresh the cart view if necessary
-        cartViewController.refreshCartDisplay();
-    }
-
-    public CartController getCartViewController() {
-        return cartViewController;
-    }
-
-    public void initializeOrderView() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/order-view.fxml"));
-            Parent root = loader.load();
-            orderViewController = loader.getController();
-            orderScene = new Scene(root);
-            orderViewController.setMainController(this, primaryStage, primaryScene);
-        } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Loading order-view.fxml.");
-            alert.setContentText("Couldn't load order-view.fxml.");
-            alert.showAndWait();
-        }
-    }
-
-    @FXML
-    protected void displayOrderView() {
-        if (orderScene == null) {
-            initializeCartView();
-        }
-        primaryStage.setScene(orderScene);
-    }
-
-    public OrderController getOrderViewController() {
-        return orderViewController;
-    }
-
+    /**
+     * Loads and displays the beverage view when the beverage button is clicked.
+     * Sets up the controller communication between main and beverage views.
+     * Shows an error if beverage-view.fxml file cannot be loaded.
+     */
     @FXML
     protected void displayBeverageView() {
         BorderPane root;
@@ -183,9 +169,9 @@ public class MainController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/beverage-view.fxml"));
             root = (BorderPane) loader.load();
             Scene scene = new Scene(root, 600  , 524);
-            primaryStage.setScene(scene);
+            this.primaryStage.setScene(scene);
             BeverageController beverageViewController = loader.getController();
-            beverageViewController.setMainController(this, primaryStage, primaryScene);
+            beverageViewController.setMainController(this, this.primaryStage, this.primaryScene);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -195,68 +181,196 @@ public class MainController {
         }
     }
 
+    /**
+     * Displays the cart view scene. Initializes the cart view if it hasn't been
+     * initialized yet and refreshes the cart display.
+     */
+    @FXML
+    protected void displayCartView() {
+        if (this.cartScene == null) {
+            initializeCartView();
+        }
+        this.primaryStage.setScene(this.cartScene);
+        // Refresh the cart view if necessary
+        this.cartViewController.refreshCartDisplay();
+    }
+
+    /**
+     * Displays the order view scene. Initializes the cart view if it hasn't been
+     * initialized yet.
+     */
+    @FXML
+    protected void displayOrderView() {
+        if (this.orderScene == null) {
+            initializeOrderView();
+        }
+        this.primaryStage.setScene(this.orderScene);
+    }
+
+    /**
+     * Set the reference of the stage and scene before show().
+     *
+     * @param stage the stage used to display the scene
+     * @param scene the scene set to the stage
+     */
+    public void setPrimaryStage(Stage stage, Scene scene) {
+        this.primaryStage = stage;
+        this.primaryScene = scene;
+    }
+
+    /**
+     * Initializes the cart view by loading the FXML file, creating the scene,
+     * and setting up the controller. Displays an error alert if the FXML file
+     * cannot be loaded.
+     */
+    public void initializeCartView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/cart-view.fxml"));
+            Parent root = loader.load();
+            this.cartViewController = loader.getController();
+            this.cartScene = new Scene(root);
+            this.cartViewController.setMainController(this, this.primaryStage, this.primaryScene);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Loading cart-view.fxml.");
+            alert.setContentText("Couldn't load cart-view.fxml.");
+            alert.showAndWait();
+        }
+    }
+
+    /**
+     * Returns the controller for the cart view.
+     *
+     * @return the CartController instance for the cart view
+     */
+    public CartController getCartViewController() {
+        return this.cartViewController;
+    }
+
+    /**
+     * Initializes the order view by loading the FXML file, creating the scene,
+     * and setting up the controller. Displays an error alert if the FXML file
+     * cannot be loaded.
+     */
+    public void initializeOrderView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/order-view.fxml"));
+            Parent root = loader.load();
+            this.orderViewController = loader.getController();
+            this.orderScene = new Scene(root);
+            this.orderViewController.setMainController(this, this.primaryStage, this.primaryScene);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Loading order-view.fxml.");
+            alert.setContentText("Couldn't load order-view.fxml.");
+            alert.showAndWait();
+        }
+    }
+
+    /**
+     * Returns the controller for the order view.
+     *
+     * @return the OrderController instance for the order view
+     */
+    public OrderController getOrderViewController() {
+        return this.orderViewController;
+    }
+
+    /**
+     * Changes the burger button's background color to gold (#decb6b) when mouse enters.
+     */
     @FXML
     public void mouseEnterBurger() {
-        bt_burger.setStyle("-fx-background-color: #decb6b");
+        this.bt_burger.setStyle("-fx-background-color: #decb6b");
     }
 
+    /**
+     * Resets the burger button's background color to white (#FFFFFF) when mouse exits.
+     */
     @FXML
     public void mouseExitBurger() {
-        bt_burger.setStyle("-fx-background-color: #FFFFFF");
+        this.bt_burger.setStyle("-fx-background-color: #FFFFFF");
     }
 
-    @FXML
-    private void sandwichClicked() {}
-
+    /**
+     * Changes the sandwich button's background color to gold (#decb6b) when mouse enters.
+     */
     @FXML
     public void mouseEnterSandwich() {
-        bt_sandwich.setStyle("-fx-background-color: #decb6b");
+        this.bt_sandwich.setStyle("-fx-background-color: #decb6b");
     }
 
+    /**
+     * Resets the sandwich button's background color to white (#FFFFFF) when mouse exits.
+     */
     @FXML
     public void mouseExitSandwich() {
-        bt_sandwich.setStyle("-fx-background-color: #FFFFFF");
+        this.bt_sandwich.setStyle("-fx-background-color: #FFFFFF");
     }
 
+    /**
+     * Changes the beverage button's background color to gold (#decb6b) when mouse enters.
+     */
     @FXML
     public void mouseEnterBeverage() {
-        bt_beverage.setStyle("-fx-background-color: #decb6b");
+        this.bt_beverage.setStyle("-fx-background-color: #decb6b");
     }
 
+    /**
+     * Resets the beverage button's background color to white (#FFFFFF) when mouse exits.
+     */
     @FXML
     public void mouseExitBeverage() {
-        bt_beverage.setStyle("-fx-background-color: #FFFFFF");
+        this.bt_beverage.setStyle("-fx-background-color: #FFFFFF");
     }
 
+    /**
+     * Changes the side dish button's background color to gold (#decb6b) when mouse enters.
+     */
     @FXML
     public void mouseEnterSide() {
-        bt_side.setStyle("-fx-background-color: #decb6b");
+        this.bt_side.setStyle("-fx-background-color: #decb6b");
     }
 
+    /**
+     * Resets the side dish button's background color to white (#FFFFFF) when mouse exits.
+     */
     @FXML
     public void mouseExitSide() {
-        bt_side.setStyle("-fx-background-color: #FFFFFF");
+        this.bt_side.setStyle("-fx-background-color: #FFFFFF");
     }
 
+    /**
+     * Changes the cart button's background color to gold (#decb6b) when mouse enters.
+     */
     @FXML
     public void mouseEnterCart() {
-        bt_cart.setStyle("-fx-background-color: #decb6b");
+        this.bt_cart.setStyle("-fx-background-color: #decb6b");
     }
 
+    /**
+     * Resets the cart button's background color to white (#FFFFFF) when mouse exits.
+     */
     @FXML
     public void mouseExitCart() {
-        bt_cart.setStyle("-fx-background-color: #FFFFFF");
+        this.bt_cart.setStyle("-fx-background-color: #FFFFFF");
     }
 
+    /**
+     * Changes the order button's background color to gold (#decb6b) when mouse enters.
+     */
     @FXML
     public void mouseEnterOrder() {
-        bt_order.setStyle("-fx-background-color: #decb6b");
+        this.bt_order.setStyle("-fx-background-color: #decb6b");
     }
 
+    /**
+     * Resets the order button's background color to white (#FFFFFF) when mouse exits.
+     */
     @FXML
     public void mouseExitOrder() {
-        bt_order.setStyle("-fx-background-color: #FFFFFF");
+        this.bt_order.setStyle("-fx-background-color: #FFFFFF");
     }
-
-
 }
