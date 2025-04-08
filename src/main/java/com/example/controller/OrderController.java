@@ -5,8 +5,13 @@ import com.example.model.Order;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -113,6 +118,34 @@ public class OrderController {
             price += item.price();
         }
         return TAX_RATE * price;
+    }
+
+    @FXML
+    private void exportOrders() {
+        if(cb_orderNum.getValue() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Please choose an order to export");
+            alert.show();
+            return;
+        }
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialFileName("Order #" + cb_orderNum.getValue());
+        File file = fileChooser.showSaveDialog(primaryStage);
+        if(file == null) {
+            return;
+        }
+        try {
+            PrintWriter printWriter = new PrintWriter(file);
+            printWriter.println("Order #" + cb_orderNum.getValue());
+            ArrayList<MenuItem> items = orders.get(cb_orderNum.getValue());
+            for(MenuItem menuItem : items) {
+                printWriter.println(menuItem);
+            }
+            printWriter.println("Order total: " + tf_total.getText());
+            printWriter.close();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

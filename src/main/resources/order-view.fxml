@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="524.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.OrderController">
+<BorderPane prefHeight="524.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.OrderController">
     <center>
         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
@@ -36,7 +36,7 @@
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <children>
                                 <Button mnemonicParsing="false" onAction="#cancelOrder" prefHeight="26.0" prefWidth="158.0" text="Cancel Order" />
-                                <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="158.0" text="Export Orders">
+                                <Button mnemonicParsing="false" onAction="#exportOrders" prefHeight="26.0" prefWidth="158.0" text="Export Orders">
                                     <HBox.margin>
                                         <Insets left="30.0" />
                                     </HBox.margin>
