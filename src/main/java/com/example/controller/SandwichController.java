@@ -13,82 +13,106 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
+/**
+ * The SandwichController class manages the user interface for customizing sandwiches.
+ * It handles user interactions with various UI elements
+ * such as radio buttons, combo boxes, and checkboxes, and calculates the sandwich price.
+ *
+ * @author Vishal Saravnanan, Yining Chen
+ */
 public class SandwichController {
 
+    /**
+     * Formatter for displaying currency in US locale format.
+     */
     NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
 
-
+    /**
+     * Reference to the MainController, used to facilitate communication with the main application.
+     */
     private MainController mainController;
 
-    private Scene primaryScene;
-
+    /**
+     * The primary stage of the application, used for managing the main window.
+     */
     private Stage primaryStage;
 
+    /**
+     * The primary scene used for navigation to the main view.
+     */
+    private Scene primaryScene;
+
+    /**
+     * RadioButton for selecting roast beef as the sandwich protein.
+     */
     @FXML
     private RadioButton rb_roastBeef;
 
+    /**
+     * RadioButton for selecting salmon as the sandwich protein.
+     */
     @FXML
     private RadioButton rb_salmon;
 
+    /**
+     * RadioButton for selecting chicken as the sandwich protein.
+     */
     @FXML
     private RadioButton rb_chicken;
 
+    /**
+     * ComboBox for selecting the quantity of sandwiches to order.
+     */
     @FXML
     private ComboBox<Integer> cb_quantity;
 
+    /**
+     * CheckBox for including lettuce as a topping.
+     */
     @FXML
     private CheckBox cb_lettuce;
 
+    /**
+     * CheckBox for including tomato as a topping.
+     */
     @FXML
     private CheckBox cb_tomato;
 
+    /**
+     * CheckBox for including onion as a topping.
+     */
     @FXML
     private CheckBox cb_onion;
 
+    /**
+     * CheckBox for including avocado as a topping.
+     */
     @FXML
     private CheckBox cb_avocado;
 
+    /**
+     * CheckBox for including cheese as a topping.
+     */
     @FXML
     private CheckBox cb_cheese;
 
+    /**
+     * TextField for displaying the price of the selected sandwich configuration.
+     * This field is non-editable.
+     */
     @FXML
     private TextField tf_price;
 
+    /**
+     * ComboBox for selecting the type of bread for the sandwich.
+     */
     @FXML
     private ComboBox<Bread> cb_bread;
 
-    @FXML
-    private void initialize() {
-        cb_quantity.getItems().addAll(1, 2, 3, 4, 5);
-        cb_quantity.setValue(1);
-        cb_quantity.setVisibleRowCount(5);
-        cb_bread.getItems().addAll(Bread.values());
-        cb_bread.setValue(Bread.BRIOCHE);
-        rb_roastBeef.setSelected(true);
-
-        tf_price.setEditable(false);
-        tf_price.setFocusTraversable(false);
-        setPrice();
-    }
-
     /**
-     * Get the reference to the MainController object.
-     * We can call any public method defined in the controller through the reference.
-     */
-    public void setMainController (MainController controller,
-                                   Stage primaryStage,
-                                   Scene primaryScene) {
-        this.mainController = controller;
-        this.primaryStage = primaryStage;
-        this.primaryScene = primaryScene;
-    }
-
-    /**
-     * When the image button is clicked, a new window(stage) will be displayed.
-     * The scene graph associated with the window is second-view.fxml, in which the
-     * fx:controller attribute defines the controller as SecondViewController.
-     * When the fxml file is loading, an instance of SecondController will be created
-     * To get the reference of the controller, use the getController() method.
+     * Handles the event triggered by clicking the image button.
+     * Opens a new window with the scene defined in combo-view.fxml and passes data
+     * to the ComboController for managing sandwich details.
      */
     @FXML
     protected void comboOnClick() {
@@ -97,12 +121,13 @@ public class SandwichController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/combo-view.fxml"));
             root = (BorderPane) loader.load();
             Scene scene = new Scene(root, 600, 524);
-            primaryStage.setScene(scene);
+            this.primaryStage.setScene(scene);
+
             ComboController comboViewController = loader.getController();
             Sandwich sandwich = getSandwich();
             sandwich.setQuantity(1);
             comboViewController.setSandwich(sandwich);
-            comboViewController.setMainController(mainController, primaryStage, primaryScene);
+            comboViewController.setMainController(this.mainController, this.primaryStage, this.primaryScene);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -112,67 +137,108 @@ public class SandwichController {
         }
     }
 
+    /**
+     * Initializes the UI components for the SandwichController.
+     * Sets default values for combo boxes and ensures certain fields are non-editable.
+     */
+    @FXML
+    private void initialize() {
+        this.cb_quantity.getItems().addAll(1, 2, 3, 4, 5);
+        this.cb_quantity.setValue(1);
+        this.cb_quantity.setVisibleRowCount(5);
+
+        this.cb_bread.getItems().addAll(Bread.values());
+        this.cb_bread.setValue(Bread.BRIOCHE);
+
+        this.rb_roastBeef.setSelected(true);
+
+        this.tf_price.setEditable(false);
+        this.tf_price.setFocusTraversable(false);
+
+        setPrice();
+    }
+
+    /**
+     * Updates the price of the sandwich based on the current selections
+     * and displays it in the TextField.
+     */
     @FXML
     private void setPrice() {
         Sandwich sandwich = getSandwich();
-        tf_price.setText(formatter.format(sandwich.price()));
+        this.tf_price.setText(formatter.format(sandwich.price()));
     }
 
+    /**
+     * Retrieves the type of bread selected in the ComboBox.
+     *
+     * @return The selected Bread type.
+     */
     private Bread getBread() {
-        return cb_bread.getValue();
+        return this.cb_bread.getValue();
     }
 
+    /**
+     * Determines the type of protein selected based on the selected RadioButton.
+     *
+     * @return The selected Protein type, or null if none is selected.
+     */
     private Protein getProtein() {
-        if(rb_roastBeef.isSelected()) {
+        if (this.rb_roastBeef.isSelected()) {
             return Protein.ROAST_BEEF;
-        } else if(rb_salmon.isSelected()) {
+        } else if (this.rb_salmon.isSelected()) {
             return Protein.SALMON;
-        } else if (rb_chicken.isSelected()) {
-           return Protein.CHICKEN;
+        } else if (this.rb_chicken.isSelected()) {
+            return Protein.CHICKEN;
         }
         return null;
     }
 
+    /**
+     * Constructs a Sandwich object based on the selected bread, protein, add-ons, and quantity.
+     *
+     * @return A Sandwich object reflecting the user's selections.
+     */
     private Sandwich getSandwich() {
         Bread bread = getBread();
         Protein protein = getProtein();
         ArrayList<AddOns> addOns = getAddOns();
-        int quantity = cb_quantity.getValue();
+        int quantity = this.cb_quantity.getValue();
         return new Sandwich(bread, protein, addOns, quantity);
     }
 
+    /**
+     * Retrieves the selected add-ons from the checkboxes.
+     *
+     * @return A list of selected AddOns.
+     */
     private ArrayList<AddOns> getAddOns() {
         ArrayList<AddOns> addOns = new ArrayList<>();
 
-        if(cb_lettuce.isSelected()) {
+        if (this.cb_lettuce.isSelected()) {
             addOns.add(AddOns.LETTUCE);
         }
-
-        if(cb_tomato.isSelected()) {
+        if (this.cb_tomato.isSelected()) {
             addOns.add(AddOns.TOMATOES);
         }
-        if(cb_onion.isSelected()) {
+        if (this.cb_onion.isSelected()) {
             addOns.add(AddOns.ONIONS);
         }
-        if(cb_avocado.isSelected()) {
+        if (this.cb_avocado.isSelected()) {
             addOns.add(AddOns.AVOCADO);
         }
-        if(cb_cheese.isSelected()) {
+        if (this.cb_cheese.isSelected()) {
             addOns.add(AddOns.CHEESE);
         }
 
         return addOns;
-
-    }
-    @FXML
-    public void displayMain() {
-        this.primaryStage.setScene(primaryScene);
-        this.primaryStage.show();
     }
 
+    /**
+     * Places the currently selected sandwich into the CartController and displays a confirmation.
+     */
     @FXML
     private void orderOnClick() {
-        CartController cartController = mainController.getCartViewController();
+        CartController cartController = this.mainController.getCartViewController();
         cartController.placeOrder(getSandwich());
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText("Ordering Sandwich");
@@ -180,4 +246,28 @@ public class SandwichController {
         alert.showAndWait();
     }
 
+    /**
+     * Sets the reference to the MainController, primary stage, and primary scene.
+     * This enables interaction with the MainController's public methods and scene navigation.
+     *
+     * @param controller   The MainController object reference.
+     * @param primaryStage The primary stage of the application.
+     * @param primaryScene The primary scene to navigate back to.
+     */
+    public void setMainController(MainController controller,
+                                  Stage primaryStage,
+                                  Scene primaryScene) {
+        this.mainController = controller;
+        this.primaryStage = primaryStage;
+        this.primaryScene = primaryScene;
+    }
+
+    /**
+     * Navigates back to the main view by setting the primary scene on the primary stage.
+     */
+    @FXML
+    public void displayMain() {
+        this.primaryStage.setScene(primaryScene);
+        this.primaryStage.show();
+    }
 }

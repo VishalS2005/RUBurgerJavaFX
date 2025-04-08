@@ -12,6 +12,8 @@ import java.util.Locale;
 
 /**
  * Controller class for managing the shopping cart functionality.
+ *
+ * @author Vishal Saravanan, Yining Chen
  */
 public class CartController {
 
@@ -124,22 +126,6 @@ public class CartController {
     }
 
     /**
-     * Sets the reference to the MainController object, Stage, and Scene.
-     * Enables calling public methods in the controller through the provided reference.
-     *
-     * @param controller   Reference to the MainController object.
-     * @param primaryStage The primary stage of the application.
-     * @param primaryScene The primary scene to display when navigating back.
-     */
-    public void setMainController(MainController controller,
-                                  Stage primaryStage,
-                                  Scene primaryScene) {
-        this.mainController = controller;
-        this.primaryStage = primaryStage;
-        this.primaryScene = primaryScene;
-    }
-
-    /**
      * Sends the current order to the OrderController and clears the cart.
      * Displays a confirmation alert after successfully placing the order.
      */
@@ -162,6 +148,22 @@ public class CartController {
     public void refreshCartDisplay() {
         this.lv_cart.refresh(); // Refresh the ListView if necessary.
         updateTotals();    // Updates subtotal, tax, and total amounts.
+    }
+
+    /**
+     * Sets the reference to the MainController object, Stage, and Scene.
+     * Enables calling public methods in the controller through the provided reference.
+     *
+     * @param controller   Reference to the MainController object.
+     * @param primaryStage The primary stage of the application.
+     * @param primaryScene The primary scene to display when navigating back.
+     */
+    public void setMainController(MainController controller,
+                                  Stage primaryStage,
+                                  Scene primaryScene) {
+        this.mainController = controller;
+        this.primaryStage = primaryStage;
+        this.primaryScene = primaryScene;
     }
 
     /**

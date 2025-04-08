@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 /**
- * The BurgerController class manages the user interface for customizing a burger
- * in a JavaFX application. It handles user interactions with UI components such as
+ * The BurgerController class manages the user interface for customizing a burger.
+ * It handles user interactions with UI components such as
  * combo boxes, radio buttons, and checkboxes, and calculates the price of the selected burger.
  *
  * @author Vishal Saravanan, Yining Chen
