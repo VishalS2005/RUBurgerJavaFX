@@ -14,7 +14,7 @@ public class Main extends javafx.application.Application {
         Scene scene = new Scene(fxmlLoader.load());
         MainController mainController = fxmlLoader.getController();
         mainController.setPrimaryStage(stage, scene);
-        stage.setTitle("Main");
+        stage.setTitle("RU Burger");
         stage.setScene(scene);
         mainController.initializeCartView();
         mainController.initializeOrderView();
