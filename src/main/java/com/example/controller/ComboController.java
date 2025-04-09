@@ -4,6 +4,8 @@ import com.example.model.*;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.text.NumberFormat;
@@ -74,6 +76,11 @@ public class ComboController {
      */
     private Sandwich sandwich;
 
+    @FXML
+    private ImageView img_side;
+
+    @FXML
+    private ImageView img_drink;
     /**
      * Initializes the UI components with default values and populates combo boxes
      * with available options for sides, beverages, and quantities.
@@ -153,7 +160,30 @@ public class ComboController {
     public void refresh() {
         double price = new Combo(this.sandwich, getBeverage(), this.cb_sides.getValue(), this.cb_quantity.getValue()).price();
         this.tf_price.setText(formatter.format(price));
+
+        Image side = switch (cb_sides.getValue()) {
+            case CHIPS -> new Image(getClass().getResource("/image/Chips.jpg").toExternalForm());
+            case APPLE_SLICES -> new Image(getClass().getResource("/image/Apple Slices.png").toExternalForm());
+            default -> null;
+        };
+
+        if (side != null) {
+            img_side.setImage(side);
+        }
+
+
+        Image drink = switch (cb_drinks.getValue()) {
+            case COLA-> new Image(getClass().getResource("/image/Soda.jpg").toExternalForm());
+            case TEA -> new Image(getClass().getResource("/image/Tea.png").toExternalForm());
+            case JUICE -> new Image(getClass().getResource("/image/Juice.png").toExternalForm());
+            default -> null;
+        };
+
+        if (drink != null) {
+            img_drink.setImage(drink);
+        }
     }
+
 
     /**
      * Sets the reference to the MainController, primary stage, and primary scene.
