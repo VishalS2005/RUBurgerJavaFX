@@ -38,8 +38,8 @@ public class BurgerTest {
         lettuceTomatoes.add(AddOns.TOMATOES);
         onionsCheese.add(AddOns.ONIONS);
         onionsCheese.add(AddOns.CHEESE);
-        singleLettuceTomatoes = new Burger(Bread.PRETZEL, false, lettuceTomatoes, 1);
-        doubleOnionsCheese = new Burger(Bread.WHEAT_BREAD, true, onionsCheese, 2);
+        this.singleLettuceTomatoes = new Burger(Bread.PRETZEL, false, lettuceTomatoes, 1);
+        this.doubleOnionsCheese = new Burger(Bread.WHEAT_BREAD, true, onionsCheese, 2);
     }
 
     /**
@@ -49,7 +49,7 @@ public class BurgerTest {
      */
     @Test
     public void singleLettuceTomatoesPrice() {
-        assertEquals(7.59, singleLettuceTomatoes.price(), 0.01);
+        assertEquals(7.59, this.singleLettuceTomatoes.price(), 0.01);
     }
 
     /**
@@ -59,6 +59,6 @@ public class BurgerTest {
      */
     @Test
     public void doubleOnionsCheesePrice() {
-        assertEquals(21.58, doubleOnionsCheese.price(), 0.01);
+        assertEquals(21.58, this.doubleOnionsCheese.price(), 0.01);
     }
 }

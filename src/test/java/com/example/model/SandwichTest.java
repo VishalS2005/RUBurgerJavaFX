@@ -56,9 +56,9 @@ public class SandwichTest {
         onionsAvocado.add(AddOns.ONIONS);
         onionsAvocado.add(AddOns.AVOCADO);
 
-        roastBeefLettuceTomatoesOnions = new Sandwich(Bread.BAGEL, Protein.ROAST_BEEF, lettuceTomatoesOnions, 1);
-        salmonAvocadoCheese = new Sandwich(Bread.SOURDOUGH, Protein.SALMON, avocadoCheese, 2);
-        chickenOnionsAvocado = new Sandwich(Bread.BRIOCHE, Protein.CHICKEN, onionsAvocado, 3);
+        this.roastBeefLettuceTomatoesOnions = new Sandwich(Bread.BAGEL, Protein.ROAST_BEEF, lettuceTomatoesOnions, 1);
+        this.salmonAvocadoCheese = new Sandwich(Bread.SOURDOUGH, Protein.SALMON, avocadoCheese, 2);
+        this.chickenOnionsAvocado = new Sandwich(Bread.BRIOCHE, Protein.CHICKEN, onionsAvocado, 3);
     }
 
     /**
@@ -67,7 +67,7 @@ public class SandwichTest {
      */
     @Test
     public void roastBeefLettuceTomatoesOnionsPrice() {
-        assertEquals(11.89, roastBeefLettuceTomatoesOnions.price(), 0.01);
+        assertEquals(11.89, this.roastBeefLettuceTomatoesOnions.price(), 0.01);
     }
 
     /**
@@ -76,7 +76,7 @@ public class SandwichTest {
      */
     @Test
     public void salmonAvocadoCheesePrice() {
-        assertEquals(22.98, salmonAvocadoCheese.price(), 0.01);
+        assertEquals(22.98, this.salmonAvocadoCheese.price(), 0.01);
     }
 
     /**
@@ -85,6 +85,6 @@ public class SandwichTest {
      */
     @Test
     public void chickenOnionsAvocadoPrice() {
-        assertEquals(29.37, chickenOnionsAvocado.price(), 0.01);
+        assertEquals(29.37, this.chickenOnionsAvocado.price(), 0.01);
     }
 }
