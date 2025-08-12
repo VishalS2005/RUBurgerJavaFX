@@ -130,7 +130,7 @@ Happy ordering! 🍟🥤🥪
 ---
 
 ## Contributing
-Yining Chen
+Yining Chen, GitHub: wekantakabotdis
 Professor Lily Chang, Rutgers University Computer Science Department
 
 ---
