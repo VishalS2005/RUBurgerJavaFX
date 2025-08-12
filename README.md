@@ -130,6 +130,7 @@ Happy ordering! 🍟🥤🥪
 ---
 
 ## Contributing
+Vishal Saravanan, GitHub: VishalS2005
 Yining Chen, GitHub: wekantakabotdis
 Professor Lily Chang, Rutgers University Computer Science Department
 
