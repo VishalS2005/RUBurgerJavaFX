@@ -126,3 +126,21 @@ Once configured:
 - 📤 Export if needed
 
 Happy ordering! 🍟🥤🥪
+
+---
+
+## Contributing
+Yining Chen
+Professor Lily Chang, Rutgers University Computer Science Department
+
+---
+
+## License
+GNU GENERAL PUBLIC LICENSE
+Version 3, 29 June 2007
+
+---
+
+## Contact
+vishalsaran2021@gmail.com
+
